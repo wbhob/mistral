@@ -3,7 +3,7 @@
   "workspaces": {
     "": {
       "dependencies": {
-        "@openapitools/openapi-generator-cli": "^2.18.4",
+        "@openapitools/openapi-generator-cli": "2.18.4",
       },
     },
   },
