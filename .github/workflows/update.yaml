@@ -1,0 +1,107 @@
+name: Mistral Go SDK Generator
+
+on:
+  schedule:
+    # Run every week at midnight UTC
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+    # Allow manual triggering
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  generate-sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: "17"
+
+      - name: Set up bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "stable"
+
+      - name: Download OpenAPI Spec
+        run: |
+          curl -L https://raw.githubusercontent.com/mistralai/platform-docs-public/main/openapi.yaml -o openapi.yaml
+
+      - name: Get Commit SHA and Version
+        id: get-version
+        run: |
+          # Fetch the latest commit SHA from the mistralai/platform-docs-public repository
+          COMMIT_SHA=$(curl -s https://api.github.com/repos/mistralai/platform-docs-public/commits/main | jq -r '.sha')
+
+          # Truncate SHA to first 7 characters (short SHA)
+          SHORT_SHA=$(echo $COMMIT_SHA | cut -c1-7)
+
+          # Extract version from commit message (assuming semantic versioning)
+          COMMIT_MSG=$(curl -s https://api.github.com/repos/mistralai/platform-docs-public/commits/main | jq -r '.commit.message')
+
+          # Try to extract version from commit message
+          VERSION=$(echo "$COMMIT_MSG" | grep -oP 'v\d+\.\d+\.\d+' | head -1)
+
+          # If no version found, use short SHA
+          VERSION=${VERSION:-v0.0.0-$SHORT_SHA}
+
+          echo "Detected version: $VERSION"
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "short_sha=$SHORT_SHA" >> $GITHUB_OUTPUT
+
+      - name: Generate Go SDK
+        run: |
+          bun run generate
+
+      - name: Go mod tidy
+        run: |
+          go mod tidy
+
+      - name: Go build
+        run: |
+          go build -v ./...
+
+      - name: Go test
+        run: |
+          go test -v ./...
+
+      - name: Check for Changes
+        id: check-changes
+        run: |
+          # Check if there are any changes
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Configure Git
+        if: steps.check-changes.outputs.changes == 'true'
+        run: |
+          git config user.name 'GitHub Actions'
+          git config user.email 'actions@github.com'
+
+      - name: Commit and Push Changes
+        if: steps.check-changes.outputs.changes == 'true'
+        run: |
+          git add .
+          git commit -m "Update Mistral SDK to ${{ steps.get-version.outputs.version }}"
+          git tag ${{ steps.get-version.outputs.version }}
+          git push origin main --tags
+
+      - name: Create GitHub Release
+        if: steps.check-changes.outputs.changes == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.get-version.outputs.version }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

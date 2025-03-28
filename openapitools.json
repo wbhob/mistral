@@ -1,0 +1,24 @@
+{
+    "$schema": "node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+    "spaces": 2,
+    "generator-cli": {
+        "version": "7.12.0",
+        "generators": {
+            "v3.0": {
+                "generatorName": "go",
+                "output": "#{cwd}",
+                "glob": "openapi.yaml",
+                "skipValidateSpec": true,
+                "gitRepoId": "mistral",
+                "gitUserId": "wbhob",
+                
+                "additionalProperties": {
+                    "packageName": "mistral",
+                    "packageVersion": "0.0.0",
+                    "enumClassPrefix": true,
+                    "generateInterfaces": true
+                }
+            }
+        }
+    }
+}
