@@ -1,10 +1,10 @@
 {
   "scripts": {
-    "generate": "npx openapi-generator-cli generate --generator-key v3.0 --input openapi.yaml",
+    "generate": "openapi-generator-cli generate --generator-key v3.0 --input openapi.yaml",
     "clean": "npm run clean:go",
     "clean:go": "find . -name \"*.go\" ! -name \"overrides.go\" -delete"
   },
   "dependencies": {
-    "@openapitools/openapi-generator-cli": "^2.18.4"
+    "@openapitools/openapi-generator-cli": "2.18.4"
   }
 }
