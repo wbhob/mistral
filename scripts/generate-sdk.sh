@@ -4,7 +4,7 @@ set -e
 # This script fetches the latest Mistral AI OpenAPI spec and generates a Go SDK
 
 # Check if jq is installed
-if ! command -v jq &> /dev/null; then
+if ! command -v jq &>/dev/null; then
     echo "Error: jq is required but not installed. Please install it first."
     exit 1
 fi
@@ -15,9 +15,6 @@ if [ ! -f "$SWAGGER_CODEGEN_JAR" ]; then
     echo "Downloading Swagger Codegen CLI v3..."
     wget https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.68/swagger-codegen-cli-3.0.68.jar -O $SWAGGER_CODEGEN_JAR
 fi
-
-# Create directories
-mkdir -p api sdk
 
 # Fetch latest OpenAPI spec
 echo "Fetching the latest OpenAPI spec from Mistral AI..."
@@ -52,15 +49,7 @@ java -jar $SWAGGER_CODEGEN_JAR generate \
     -o . \
     --additional-properties packageName=mistral
 
-# Initialize Go module
-echo "Initializing Go module..."
-cd sdk
-# Replace repository name with your actual repository path
-REPO_PATH="github.com/wbhob/mistral"
-go mod init $REPO_PATH
 go mod tidy
-cd ..
-
 # Git operations
 echo "Committing changes..."
 git add openapi.yaml .
