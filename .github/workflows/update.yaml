@@ -1,0 +1,119 @@
+name: Update Mistral Go SDK
+
+on:
+  schedule:
+    # Run daily at midnight UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:  # Allow manual triggering
+  pull_request:
+    paths:
+      - '.github/workflows/update.yaml'
+
+jobs:
+  update-sdk:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+          
+      - name: Download Swagger Codegen CLI v3
+        run: |
+          wget https://repo1.maven.org/maven2/io/swagger/codegen/v3/swagger-codegen-cli/3.0.68/swagger-codegen-cli-3.0.68.jar -O swagger-codegen-cli.jar
+      
+      - name: Fetch latest OpenAPI spec
+        id: fetch-spec
+        run: |
+          # Install spectral for OpenAPI validation
+          npm install -g @stoplight/spectral-cli
+          
+
+          # Get the raw content URL
+          RAW_URL="https://raw.githubusercontent.com/mistralai/platform-docs-public/main/openapi.yaml"
+          
+          # Download the OpenAPI spec
+          mkdir -p api
+          curl -L $RAW_URL -o api/openapi.yaml
+          
+          # Validate the OpenAPI spec
+          echo "Validating OpenAPI specification..."
+          spectral lint api/openapi.yaml || echo "Warning: OpenAPI spec has validation issues but we'll proceed anyway"
+          
+          # Get the latest commit hash and message for the file
+          REPO_URL="https://api.github.com/repos/mistralai/platform-docs-public/commits?path=openapi.yaml&per_page=1"
+          COMMIT_INFO=$(curl -s $REPO_URL)
+          
+          # Extract commit hash and message
+          COMMIT_HASH=$(echo $COMMIT_INFO | jq -r '.[0].sha')
+          COMMIT_MESSAGE=$(echo $COMMIT_INFO | jq -r '.[0].commit.message')
+          
+          # Try to extract version from commit message
+          VERSION_PATTERN="v[0-9]+\.[0-9]+\.[0-9]+"
+          if [[ $COMMIT_MESSAGE =~ $VERSION_PATTERN ]]; then
+            VERSION=${BASH_REMATCH[0]}
+          else
+            # Fallback: use date and short commit hash
+            VERSION="v$(date +%Y%m%d)-${COMMIT_HASH:0:7}"
+          fi
+          
+          echo "Version from commit: $VERSION"
+          echo "commit_hash=$COMMIT_HASH" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+      
+      - name: Generate Go client
+        run: |
+          # Clean the output directory if it exists
+          rm -rf sdk
+          mkdir -p sdk
+          
+          # Generate the client with Swagger Codegen v3
+          java -jar swagger-codegen-cli.jar generate \
+            -i openapi.yaml \
+            -g go \
+            -o . \
+            --additional-properties=packageName=mistral,isGoSubmodule=true
+          
+          # Initialize Go module
+          cd sdk
+          go mod init github.com/${{ github.repository }}
+          go mod tidy
+          cd ..
+      
+      - name: Check for changes
+        id: check-changes
+        run: |
+          # Check if there are changes to commit
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Commit and tag changes
+        if: steps.check-changes.outputs.changes == 'true'
+        run: |
+          # Configure git
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Add changes
+          git add .
+          
+          # Commit and tag
+          git commit -m "Update Mistral SDK to ${{ steps.fetch-spec.outputs.version }}"
+          git tag -a "${{ steps.fetch-spec.outputs.version }}" -m "Mistral SDK ${{ steps.fetch-spec.outputs.version }}"
+          
+          # Push changes
+          git push origin main
+          git push origin "${{ steps.fetch-spec.outputs.version }}"
