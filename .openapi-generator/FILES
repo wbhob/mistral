@@ -263,14 +263,4 @@ model_validation_error_loc_inner.go
 model_wandb_integration.go
 model_wandb_integration_out.go
 response.go
-test/api_agents_test.go
-test/api_batch_test.go
-test/api_chat_test.go
-test/api_classifiers_test.go
-test/api_embeddings_test.go
-test/api_files_test.go
-test/api_fim_test.go
-test/api_fine_tuning_test.go
-test/api_models_test.go
-test/api_ocr_test.go
 utils.go
