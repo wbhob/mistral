@@ -1,5 +1,9 @@
 name: Mistral Go SDK Generator
 
+permissions:
+  contents: write
+  pull-requests: write
+
 on:
   schedule:
     # Run every week at midnight UTC
