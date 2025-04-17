@@ -26,6 +26,7 @@ type WandbIntegrationOut struct {
 	Project string `json:"project"`
 	Name NullableString `json:"name,omitempty"`
 	RunName NullableString `json:"run_name,omitempty"`
+	Url NullableString `json:"url,omitempty"`
 }
 
 type _WandbIntegrationOut WandbIntegrationOut
@@ -192,6 +193,48 @@ func (o *WandbIntegrationOut) UnsetRunName() {
 	o.RunName.Unset()
 }
 
+// GetUrl returns the Url field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *WandbIntegrationOut) GetUrl() string {
+	if o == nil || IsNil(o.Url.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Url.Get()
+}
+
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *WandbIntegrationOut) GetUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Url.Get(), o.Url.IsSet()
+}
+
+// HasUrl returns a boolean if a field has been set.
+func (o *WandbIntegrationOut) HasUrl() bool {
+	if o != nil && o.Url.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given NullableString and assigns it to the Url field.
+func (o *WandbIntegrationOut) SetUrl(v string) {
+	o.Url.Set(&v)
+}
+// SetUrlNil sets the value for Url to be an explicit nil
+func (o *WandbIntegrationOut) SetUrlNil() {
+	o.Url.Set(nil)
+}
+
+// UnsetUrl ensures that no value is present for Url, not even an explicit nil
+func (o *WandbIntegrationOut) UnsetUrl() {
+	o.Url.Unset()
+}
+
 func (o WandbIntegrationOut) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -211,6 +254,9 @@ func (o WandbIntegrationOut) ToMap() (map[string]interface{}, error) {
 	}
 	if o.RunName.IsSet() {
 		toSerialize["run_name"] = o.RunName.Get()
+	}
+	if o.Url.IsSet() {
+		toSerialize["url"] = o.Url.Get()
 	}
 	return toSerialize, nil
 }

@@ -18,26 +18,13 @@ import (
 
 // Response struct for Response
 type Response struct {
-	JobOut *JobOut
 	LegacyJobMetadataOut *LegacyJobMetadataOut
+	ResponseAnyOf *ResponseAnyOf
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *Response) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into JobOut
-	err = json.Unmarshal(data, &dst.JobOut);
-	if err == nil {
-		jsonJobOut, _ := json.Marshal(dst.JobOut)
-		if string(jsonJobOut) == "{}" { // empty struct
-			dst.JobOut = nil
-		} else {
-			return nil // data stored in dst.JobOut, return on the first match
-		}
-	} else {
-		dst.JobOut = nil
-	}
-
 	// try to unmarshal JSON data into LegacyJobMetadataOut
 	err = json.Unmarshal(data, &dst.LegacyJobMetadataOut);
 	if err == nil {
@@ -51,17 +38,30 @@ func (dst *Response) UnmarshalJSON(data []byte) error {
 		dst.LegacyJobMetadataOut = nil
 	}
 
+	// try to unmarshal JSON data into ResponseAnyOf
+	err = json.Unmarshal(data, &dst.ResponseAnyOf);
+	if err == nil {
+		jsonResponseAnyOf, _ := json.Marshal(dst.ResponseAnyOf)
+		if string(jsonResponseAnyOf) == "{}" { // empty struct
+			dst.ResponseAnyOf = nil
+		} else {
+			return nil // data stored in dst.ResponseAnyOf, return on the first match
+		}
+	} else {
+		dst.ResponseAnyOf = nil
+	}
+
 	return fmt.Errorf("data failed to match schemas in anyOf(Response)")
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src Response) MarshalJSON() ([]byte, error) {
-	if src.JobOut != nil {
-		return json.Marshal(&src.JobOut)
-	}
-
 	if src.LegacyJobMetadataOut != nil {
 		return json.Marshal(&src.LegacyJobMetadataOut)
+	}
+
+	if src.ResponseAnyOf != nil {
+		return json.Marshal(&src.ResponseAnyOf)
 	}
 
 	return nil, nil // no data in anyOf schemas

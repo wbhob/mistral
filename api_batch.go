@@ -18,6 +18,7 @@ import (
 	"net/url"
 	"strings"
 	"time"
+	"reflect"
 )
 
 
@@ -410,7 +411,7 @@ type ApiJobsApiRoutesBatchGetBatchJobsRequest struct {
 	metadata *map[string]interface{}
 	createdAfter *time.Time
 	createdByMe *bool
-	status *BatchJobStatus
+	status *[]BatchJobStatus
 }
 
 func (r ApiJobsApiRoutesBatchGetBatchJobsRequest) Page(page int32) ApiJobsApiRoutesBatchGetBatchJobsRequest {
@@ -443,7 +444,7 @@ func (r ApiJobsApiRoutesBatchGetBatchJobsRequest) CreatedByMe(createdByMe bool) 
 	return r
 }
 
-func (r ApiJobsApiRoutesBatchGetBatchJobsRequest) Status(status BatchJobStatus) ApiJobsApiRoutesBatchGetBatchJobsRequest {
+func (r ApiJobsApiRoutesBatchGetBatchJobsRequest) Status(status []BatchJobStatus) ApiJobsApiRoutesBatchGetBatchJobsRequest {
 	r.status = &status
 	return r
 }
@@ -516,7 +517,15 @@ func (a *BatchAPIService) JobsApiRoutesBatchGetBatchJobsExecute(r ApiJobsApiRout
 		r.createdByMe = &defaultValue
 	}
 	if r.status != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "status", r.status, "form", "")
+		t := *r.status
+		if reflect.TypeOf(t).Kind() == reflect.Slice {
+			s := reflect.ValueOf(t)
+			for i := 0; i < s.Len(); i++ {
+				parameterAddToHeaderOrQuery(localVarQueryParams, "status", s.Index(i).Interface(), "form", "multi")
+			}
+		} else {
+			parameterAddToHeaderOrQuery(localVarQueryParams, "status", t, "form", "multi")
+		}
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

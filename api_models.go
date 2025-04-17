@@ -79,8 +79,8 @@ type ModelsAPI interface {
 	JobsApiRoutesFineTuningUpdateFineTunedModel(ctx context.Context, modelId string) ApiJobsApiRoutesFineTuningUpdateFineTunedModelRequest
 
 	// JobsApiRoutesFineTuningUpdateFineTunedModelExecute executes the request
-	//  @return FTModelOut
-	JobsApiRoutesFineTuningUpdateFineTunedModelExecute(r ApiJobsApiRoutesFineTuningUpdateFineTunedModelRequest) (*FTModelOut, *http.Response, error)
+	//  @return Response2
+	JobsApiRoutesFineTuningUpdateFineTunedModelExecute(r ApiJobsApiRoutesFineTuningUpdateFineTunedModelRequest) (*Response2, *http.Response, error)
 
 	/*
 	ListModelsV1ModelsGet List Models
@@ -446,7 +446,7 @@ func (r ApiJobsApiRoutesFineTuningUpdateFineTunedModelRequest) UpdateFTModelIn(u
 	return r
 }
 
-func (r ApiJobsApiRoutesFineTuningUpdateFineTunedModelRequest) Execute() (*FTModelOut, *http.Response, error) {
+func (r ApiJobsApiRoutesFineTuningUpdateFineTunedModelRequest) Execute() (*Response2, *http.Response, error) {
 	return r.ApiService.JobsApiRoutesFineTuningUpdateFineTunedModelExecute(r)
 }
 
@@ -468,13 +468,13 @@ func (a *ModelsAPIService) JobsApiRoutesFineTuningUpdateFineTunedModel(ctx conte
 }
 
 // Execute executes the request
-//  @return FTModelOut
-func (a *ModelsAPIService) JobsApiRoutesFineTuningUpdateFineTunedModelExecute(r ApiJobsApiRoutesFineTuningUpdateFineTunedModelRequest) (*FTModelOut, *http.Response, error) {
+//  @return Response2
+func (a *ModelsAPIService) JobsApiRoutesFineTuningUpdateFineTunedModelExecute(r ApiJobsApiRoutesFineTuningUpdateFineTunedModelRequest) (*Response2, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *FTModelOut
+		localVarReturnValue  *Response2
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ModelsAPIService.JobsApiRoutesFineTuningUpdateFineTunedModel")

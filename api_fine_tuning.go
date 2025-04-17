@@ -35,8 +35,8 @@ type FineTuningAPI interface {
 	JobsApiRoutesFineTuningCancelFineTuningJob(ctx context.Context, jobId string) ApiJobsApiRoutesFineTuningCancelFineTuningJobRequest
 
 	// JobsApiRoutesFineTuningCancelFineTuningJobExecute executes the request
-	//  @return DetailedJobOut
-	JobsApiRoutesFineTuningCancelFineTuningJobExecute(r ApiJobsApiRoutesFineTuningCancelFineTuningJobRequest) (*DetailedJobOut, *http.Response, error)
+	//  @return Response1
+	JobsApiRoutesFineTuningCancelFineTuningJobExecute(r ApiJobsApiRoutesFineTuningCancelFineTuningJobRequest) (*Response1, *http.Response, error)
 
 	/*
 	JobsApiRoutesFineTuningCreateFineTuningJob Create Fine Tuning Job
@@ -64,8 +64,8 @@ type FineTuningAPI interface {
 	JobsApiRoutesFineTuningGetFineTuningJob(ctx context.Context, jobId string) ApiJobsApiRoutesFineTuningGetFineTuningJobRequest
 
 	// JobsApiRoutesFineTuningGetFineTuningJobExecute executes the request
-	//  @return DetailedJobOut
-	JobsApiRoutesFineTuningGetFineTuningJobExecute(r ApiJobsApiRoutesFineTuningGetFineTuningJobRequest) (*DetailedJobOut, *http.Response, error)
+	//  @return Response1
+	JobsApiRoutesFineTuningGetFineTuningJobExecute(r ApiJobsApiRoutesFineTuningGetFineTuningJobRequest) (*Response1, *http.Response, error)
 
 	/*
 	JobsApiRoutesFineTuningGetFineTuningJobs Get Fine Tuning Jobs
@@ -93,8 +93,8 @@ type FineTuningAPI interface {
 	JobsApiRoutesFineTuningStartFineTuningJob(ctx context.Context, jobId string) ApiJobsApiRoutesFineTuningStartFineTuningJobRequest
 
 	// JobsApiRoutesFineTuningStartFineTuningJobExecute executes the request
-	//  @return DetailedJobOut
-	JobsApiRoutesFineTuningStartFineTuningJobExecute(r ApiJobsApiRoutesFineTuningStartFineTuningJobRequest) (*DetailedJobOut, *http.Response, error)
+	//  @return Response1
+	JobsApiRoutesFineTuningStartFineTuningJobExecute(r ApiJobsApiRoutesFineTuningStartFineTuningJobRequest) (*Response1, *http.Response, error)
 }
 
 // FineTuningAPIService FineTuningAPI service
@@ -106,7 +106,7 @@ type ApiJobsApiRoutesFineTuningCancelFineTuningJobRequest struct {
 	jobId string
 }
 
-func (r ApiJobsApiRoutesFineTuningCancelFineTuningJobRequest) Execute() (*DetailedJobOut, *http.Response, error) {
+func (r ApiJobsApiRoutesFineTuningCancelFineTuningJobRequest) Execute() (*Response1, *http.Response, error) {
 	return r.ApiService.JobsApiRoutesFineTuningCancelFineTuningJobExecute(r)
 }
 
@@ -128,13 +128,13 @@ func (a *FineTuningAPIService) JobsApiRoutesFineTuningCancelFineTuningJob(ctx co
 }
 
 // Execute executes the request
-//  @return DetailedJobOut
-func (a *FineTuningAPIService) JobsApiRoutesFineTuningCancelFineTuningJobExecute(r ApiJobsApiRoutesFineTuningCancelFineTuningJobRequest) (*DetailedJobOut, *http.Response, error) {
+//  @return Response1
+func (a *FineTuningAPIService) JobsApiRoutesFineTuningCancelFineTuningJobExecute(r ApiJobsApiRoutesFineTuningCancelFineTuningJobRequest) (*Response1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DetailedJobOut
+		localVarReturnValue  *Response1
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FineTuningAPIService.JobsApiRoutesFineTuningCancelFineTuningJob")
@@ -329,7 +329,7 @@ type ApiJobsApiRoutesFineTuningGetFineTuningJobRequest struct {
 	jobId string
 }
 
-func (r ApiJobsApiRoutesFineTuningGetFineTuningJobRequest) Execute() (*DetailedJobOut, *http.Response, error) {
+func (r ApiJobsApiRoutesFineTuningGetFineTuningJobRequest) Execute() (*Response1, *http.Response, error) {
 	return r.ApiService.JobsApiRoutesFineTuningGetFineTuningJobExecute(r)
 }
 
@@ -351,13 +351,13 @@ func (a *FineTuningAPIService) JobsApiRoutesFineTuningGetFineTuningJob(ctx conte
 }
 
 // Execute executes the request
-//  @return DetailedJobOut
-func (a *FineTuningAPIService) JobsApiRoutesFineTuningGetFineTuningJobExecute(r ApiJobsApiRoutesFineTuningGetFineTuningJobRequest) (*DetailedJobOut, *http.Response, error) {
+//  @return Response1
+func (a *FineTuningAPIService) JobsApiRoutesFineTuningGetFineTuningJobExecute(r ApiJobsApiRoutesFineTuningGetFineTuningJobRequest) (*Response1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodGet
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DetailedJobOut
+		localVarReturnValue  *Response1
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FineTuningAPIService.JobsApiRoutesFineTuningGetFineTuningJob")
@@ -433,6 +433,7 @@ type ApiJobsApiRoutesFineTuningGetFineTuningJobsRequest struct {
 	pageSize *int32
 	model *string
 	createdAfter *time.Time
+	createdBefore *time.Time
 	createdByMe *bool
 	status *string
 	wandbProject *string
@@ -461,6 +462,11 @@ func (r ApiJobsApiRoutesFineTuningGetFineTuningJobsRequest) Model(model string) 
 // The date/time to filter on. When set, the results for previous creation times are not displayed.
 func (r ApiJobsApiRoutesFineTuningGetFineTuningJobsRequest) CreatedAfter(createdAfter time.Time) ApiJobsApiRoutesFineTuningGetFineTuningJobsRequest {
 	r.createdAfter = &createdAfter
+	return r
+}
+
+func (r ApiJobsApiRoutesFineTuningGetFineTuningJobsRequest) CreatedBefore(createdBefore time.Time) ApiJobsApiRoutesFineTuningGetFineTuningJobsRequest {
+	r.createdBefore = &createdBefore
 	return r
 }
 
@@ -552,6 +558,9 @@ func (a *FineTuningAPIService) JobsApiRoutesFineTuningGetFineTuningJobsExecute(r
 	if r.createdAfter != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_after", r.createdAfter, "form", "")
 	}
+	if r.createdBefore != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "created_before", r.createdBefore, "form", "")
+	}
 	if r.createdByMe != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "created_by_me", r.createdByMe, "form", "")
 	} else {
@@ -630,7 +639,7 @@ type ApiJobsApiRoutesFineTuningStartFineTuningJobRequest struct {
 	jobId string
 }
 
-func (r ApiJobsApiRoutesFineTuningStartFineTuningJobRequest) Execute() (*DetailedJobOut, *http.Response, error) {
+func (r ApiJobsApiRoutesFineTuningStartFineTuningJobRequest) Execute() (*Response1, *http.Response, error) {
 	return r.ApiService.JobsApiRoutesFineTuningStartFineTuningJobExecute(r)
 }
 
@@ -652,13 +661,13 @@ func (a *FineTuningAPIService) JobsApiRoutesFineTuningStartFineTuningJob(ctx con
 }
 
 // Execute executes the request
-//  @return DetailedJobOut
-func (a *FineTuningAPIService) JobsApiRoutesFineTuningStartFineTuningJobExecute(r ApiJobsApiRoutesFineTuningStartFineTuningJobRequest) (*DetailedJobOut, *http.Response, error) {
+//  @return Response1
+func (a *FineTuningAPIService) JobsApiRoutesFineTuningStartFineTuningJobExecute(r ApiJobsApiRoutesFineTuningStartFineTuningJobRequest) (*Response1, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *DetailedJobOut
+		localVarReturnValue  *Response1
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "FineTuningAPIService.JobsApiRoutesFineTuningStartFineTuningJob")

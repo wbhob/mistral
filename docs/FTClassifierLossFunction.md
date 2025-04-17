@@ -1,0 +1,13 @@
+# FTClassifierLossFunction
+
+## Enum
+
+
+* `SINGLE_CLASS` (value: `"single_class"`)
+
+* `MULTI_CLASS` (value: `"multi_class"`)
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

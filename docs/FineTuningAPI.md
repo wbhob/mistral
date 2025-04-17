@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## JobsApiRoutesFineTuningCancelFineTuningJob
 
-> DetailedJobOut JobsApiRoutesFineTuningCancelFineTuningJob(ctx, jobId).Execute()
+> Response1 JobsApiRoutesFineTuningCancelFineTuningJob(ctx, jobId).Execute()
 
 Cancel Fine Tuning Job
 
@@ -42,7 +42,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FineTuningAPI.JobsApiRoutesFineTuningCancelFineTuningJob``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `JobsApiRoutesFineTuningCancelFineTuningJob`: DetailedJobOut
+	// response from `JobsApiRoutesFineTuningCancelFineTuningJob`: Response1
 	fmt.Fprintf(os.Stdout, "Response from `FineTuningAPI.JobsApiRoutesFineTuningCancelFineTuningJob`: %v\n", resp)
 }
 ```
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DetailedJobOut**](DetailedJobOut.md)
+[**Response1**](Response1.md)
 
 ### Authorization
 
@@ -103,7 +103,7 @@ import (
 )
 
 func main() {
-	jobIn := *openapiclient.NewJobIn(openapiclient.FineTuneableModel("open-mistral-7b"), *openapiclient.NewTrainingParametersIn()) // JobIn | 
+	jobIn := *openapiclient.NewJobIn(openapiclient.FineTuneableModel("open-mistral-7b"), *openapiclient.NewHyperparameters()) // JobIn | 
 	dryRun := true // bool | * If `true` the job is not spawned, instead the query returns a handful of useful metadata   for the user to perform sanity checks (see `LegacyJobMetadataOut` response). * Otherwise, the job is started and the query returns the job ID along with some of the   input parameters (see `JobOut` response).  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## JobsApiRoutesFineTuningGetFineTuningJob
 
-> DetailedJobOut JobsApiRoutesFineTuningGetFineTuningJob(ctx, jobId).Execute()
+> Response1 JobsApiRoutesFineTuningGetFineTuningJob(ctx, jobId).Execute()
 
 Get Fine Tuning Job
 
@@ -180,7 +180,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FineTuningAPI.JobsApiRoutesFineTuningGetFineTuningJob``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `JobsApiRoutesFineTuningGetFineTuningJob`: DetailedJobOut
+	// response from `JobsApiRoutesFineTuningGetFineTuningJob`: Response1
 	fmt.Fprintf(os.Stdout, "Response from `FineTuningAPI.JobsApiRoutesFineTuningGetFineTuningJob`: %v\n", resp)
 }
 ```
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DetailedJobOut**](DetailedJobOut.md)
+[**Response1**](Response1.md)
 
 ### Authorization
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 ## JobsApiRoutesFineTuningGetFineTuningJobs
 
-> JobsOut JobsApiRoutesFineTuningGetFineTuningJobs(ctx).Page(page).PageSize(pageSize).Model(model).CreatedAfter(createdAfter).CreatedByMe(createdByMe).Status(status).WandbProject(wandbProject).WandbName(wandbName).Suffix(suffix).Execute()
+> JobsOut JobsApiRoutesFineTuningGetFineTuningJobs(ctx).Page(page).PageSize(pageSize).Model(model).CreatedAfter(createdAfter).CreatedBefore(createdBefore).CreatedByMe(createdByMe).Status(status).WandbProject(wandbProject).WandbName(wandbName).Suffix(suffix).Execute()
 
 Get Fine Tuning Jobs
 
@@ -246,6 +246,7 @@ func main() {
 	pageSize := int32(56) // int32 | The number of items to return per page. (optional) (default to 100)
 	model := "model_example" // string | The model name used for fine-tuning to filter on. When set, the other results are not displayed. (optional)
 	createdAfter := time.Now() // time.Time | The date/time to filter on. When set, the results for previous creation times are not displayed. (optional)
+	createdBefore := time.Now() // time.Time |  (optional)
 	createdByMe := true // bool | When set, only return results for jobs created by the API caller. Other results are not displayed. (optional) (default to false)
 	status := "status_example" // string | The current job state to filter on. When set, the other results are not displayed. (optional)
 	wandbProject := "wandbProject_example" // string | The Weights and Biases project to filter on. When set, the other results are not displayed. (optional)
@@ -254,7 +255,7 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.FineTuningAPI.JobsApiRoutesFineTuningGetFineTuningJobs(context.Background()).Page(page).PageSize(pageSize).Model(model).CreatedAfter(createdAfter).CreatedByMe(createdByMe).Status(status).WandbProject(wandbProject).WandbName(wandbName).Suffix(suffix).Execute()
+	resp, r, err := apiClient.FineTuningAPI.JobsApiRoutesFineTuningGetFineTuningJobs(context.Background()).Page(page).PageSize(pageSize).Model(model).CreatedAfter(createdAfter).CreatedBefore(createdBefore).CreatedByMe(createdByMe).Status(status).WandbProject(wandbProject).WandbName(wandbName).Suffix(suffix).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `FineTuningAPI.JobsApiRoutesFineTuningGetFineTuningJobs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -279,6 +280,7 @@ Name | Type | Description  | Notes
  **pageSize** | **int32** | The number of items to return per page. | [default to 100]
  **model** | **string** | The model name used for fine-tuning to filter on. When set, the other results are not displayed. | 
  **createdAfter** | **time.Time** | The date/time to filter on. When set, the results for previous creation times are not displayed. | 
+ **createdBefore** | **time.Time** |  | 
  **createdByMe** | **bool** | When set, only return results for jobs created by the API caller. Other results are not displayed. | [default to false]
  **status** | **string** | The current job state to filter on. When set, the other results are not displayed. | 
  **wandbProject** | **string** | The Weights and Biases project to filter on. When set, the other results are not displayed. | 
@@ -305,7 +307,7 @@ Name | Type | Description  | Notes
 
 ## JobsApiRoutesFineTuningStartFineTuningJob
 
-> DetailedJobOut JobsApiRoutesFineTuningStartFineTuningJob(ctx, jobId).Execute()
+> Response1 JobsApiRoutesFineTuningStartFineTuningJob(ctx, jobId).Execute()
 
 Start Fine Tuning Job
 
@@ -333,7 +335,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FineTuningAPI.JobsApiRoutesFineTuningStartFineTuningJob``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `JobsApiRoutesFineTuningStartFineTuningJob`: DetailedJobOut
+	// response from `JobsApiRoutesFineTuningStartFineTuningJob`: Response1
 	fmt.Fprintf(os.Stdout, "Response from `FineTuningAPI.JobsApiRoutesFineTuningStartFineTuningJob`: %v\n", resp)
 }
 ```
@@ -357,7 +359,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DetailedJobOut**](DetailedJobOut.md)
+[**Response1**](Response1.md)
 
 ### Authorization
 

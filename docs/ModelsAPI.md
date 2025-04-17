@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## JobsApiRoutesFineTuningUpdateFineTunedModel
 
-> FTModelOut JobsApiRoutesFineTuningUpdateFineTunedModel(ctx, modelId).UpdateFTModelIn(updateFTModelIn).Execute()
+> Response2 JobsApiRoutesFineTuningUpdateFineTunedModel(ctx, modelId).UpdateFTModelIn(updateFTModelIn).Execute()
 
 Update Fine Tuned Model
 
@@ -254,7 +254,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ModelsAPI.JobsApiRoutesFineTuningUpdateFineTunedModel``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `JobsApiRoutesFineTuningUpdateFineTunedModel`: FTModelOut
+	// response from `JobsApiRoutesFineTuningUpdateFineTunedModel`: Response2
 	fmt.Fprintf(os.Stdout, "Response from `ModelsAPI.JobsApiRoutesFineTuningUpdateFineTunedModel`: %v\n", resp)
 }
 ```
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FTModelOut**](FTModelOut.md)
+[**Response2**](Response2.md)
 
 ### Authorization
 

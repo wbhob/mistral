@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Data** | Pointer to [**[]JobOut**](JobOut.md) |  | [optional] [default to []]
+**Data** | Pointer to [**[]ResponseAnyOf**](ResponseAnyOf.md) |  | [optional] [default to []]
 **Object** | Pointer to **string** |  | [optional] [default to "list"]
 **Total** | **int32** |  | 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetData
 
-`func (o *JobsOut) GetData() []JobOut`
+`func (o *JobsOut) GetData() []ResponseAnyOf`
 
 GetData returns the Data field if non-nil, zero value otherwise.
 
 ### GetDataOk
 
-`func (o *JobsOut) GetDataOk() (*[]JobOut, bool)`
+`func (o *JobsOut) GetDataOk() (*[]ResponseAnyOf, bool)`
 
 GetDataOk returns a tuple with the Data field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetData
 
-`func (o *JobsOut) SetData(v []JobOut)`
+`func (o *JobsOut) SetData(v []ResponseAnyOf)`
 
 SetData sets Data field to given value.
 

@@ -12,6 +12,8 @@ package mistral
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ClassificationResponse type satisfies the MappedNullable interface at compile time
@@ -19,17 +21,22 @@ var _ MappedNullable = &ClassificationResponse{}
 
 // ClassificationResponse struct for ClassificationResponse
 type ClassificationResponse struct {
-	Id *string `json:"id,omitempty"`
-	Model *string `json:"model,omitempty"`
-	Results []interface{} `json:"results,omitempty"`
+	Id string `json:"id"`
+	Model string `json:"model"`
+	Results []map[string]ClassificationTargetResult `json:"results"`
 }
+
+type _ClassificationResponse ClassificationResponse
 
 // NewClassificationResponse instantiates a new ClassificationResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClassificationResponse() *ClassificationResponse {
+func NewClassificationResponse(id string, model string, results []map[string]ClassificationTargetResult) *ClassificationResponse {
 	this := ClassificationResponse{}
+	this.Id = id
+	this.Model = model
+	this.Results = results
 	return &this
 }
 
@@ -41,99 +48,75 @@ func NewClassificationResponseWithDefaults() *ClassificationResponse {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
+// GetId returns the Id field value
 func (o *ClassificationResponse) GetId() string {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Id
+
+	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
 func (o *ClassificationResponse) GetIdOk() (*string, bool) {
-	if o == nil || IsNil(o.Id) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Id, true
+	return &o.Id, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *ClassificationResponse) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
-		return true
-	}
-
-	return false
-}
-
-// SetId gets a reference to the given string and assigns it to the Id field.
+// SetId sets field value
 func (o *ClassificationResponse) SetId(v string) {
-	o.Id = &v
+	o.Id = v
 }
 
-// GetModel returns the Model field value if set, zero value otherwise.
+// GetModel returns the Model field value
 func (o *ClassificationResponse) GetModel() string {
-	if o == nil || IsNil(o.Model) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Model
+
+	return o.Model
 }
 
-// GetModelOk returns a tuple with the Model field value if set, nil otherwise
+// GetModelOk returns a tuple with the Model field value
 // and a boolean to check if the value has been set.
 func (o *ClassificationResponse) GetModelOk() (*string, bool) {
-	if o == nil || IsNil(o.Model) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Model, true
+	return &o.Model, true
 }
 
-// HasModel returns a boolean if a field has been set.
-func (o *ClassificationResponse) HasModel() bool {
-	if o != nil && !IsNil(o.Model) {
-		return true
-	}
-
-	return false
-}
-
-// SetModel gets a reference to the given string and assigns it to the Model field.
+// SetModel sets field value
 func (o *ClassificationResponse) SetModel(v string) {
-	o.Model = &v
+	o.Model = v
 }
 
-// GetResults returns the Results field value if set, zero value otherwise.
-func (o *ClassificationResponse) GetResults() []interface{} {
-	if o == nil || IsNil(o.Results) {
-		var ret []interface{}
+// GetResults returns the Results field value
+func (o *ClassificationResponse) GetResults() []map[string]ClassificationTargetResult {
+	if o == nil {
+		var ret []map[string]ClassificationTargetResult
 		return ret
 	}
+
 	return o.Results
 }
 
-// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
+// GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *ClassificationResponse) GetResultsOk() ([]interface{}, bool) {
-	if o == nil || IsNil(o.Results) {
+func (o *ClassificationResponse) GetResultsOk() ([]map[string]ClassificationTargetResult, bool) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Results, true
 }
 
-// HasResults returns a boolean if a field has been set.
-func (o *ClassificationResponse) HasResults() bool {
-	if o != nil && !IsNil(o.Results) {
-		return true
-	}
-
-	return false
-}
-
-// SetResults gets a reference to the given []interface{} and assigns it to the Results field.
-func (o *ClassificationResponse) SetResults(v []interface{}) {
+// SetResults sets field value
+func (o *ClassificationResponse) SetResults(v []map[string]ClassificationTargetResult) {
 	o.Results = v
 }
 
@@ -147,16 +130,49 @@ func (o ClassificationResponse) MarshalJSON() ([]byte, error) {
 
 func (o ClassificationResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
-	}
-	if !IsNil(o.Model) {
-		toSerialize["model"] = o.Model
-	}
-	if !IsNil(o.Results) {
-		toSerialize["results"] = o.Results
-	}
+	toSerialize["id"] = o.Id
+	toSerialize["model"] = o.Model
+	toSerialize["results"] = o.Results
 	return toSerialize, nil
+}
+
+func (o *ClassificationResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"model",
+		"results",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varClassificationResponse := _ClassificationResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varClassificationResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClassificationResponse(varClassificationResponse)
+
+	return err
 }
 
 type NullableClassificationResponse struct {

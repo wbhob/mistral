@@ -26,6 +26,7 @@ const (
 	FINETUNEABLEMODEL_MISTRAL_LARGE_LATEST FineTuneableModel = "mistral-large-latest"
 	FINETUNEABLEMODEL_OPEN_MISTRAL_NEMO FineTuneableModel = "open-mistral-nemo"
 	FINETUNEABLEMODEL_MINISTRAL_3B_LATEST FineTuneableModel = "ministral-3b-latest"
+	FINETUNEABLEMODEL_MINISTRAL_8B_LATEST FineTuneableModel = "ministral-8b-latest"
 )
 
 // All allowed values of FineTuneableModel enum
@@ -36,6 +37,7 @@ var AllowedFineTuneableModelEnumValues = []FineTuneableModel{
 	"mistral-large-latest",
 	"open-mistral-nemo",
 	"ministral-3b-latest",
+	"ministral-8b-latest",
 }
 
 func (v *FineTuneableModel) UnmarshalJSON(src []byte) error {

@@ -20,9 +20,8 @@ var _ MappedNullable = &ChatModerationRequest{}
 
 // ChatModerationRequest struct for ChatModerationRequest
 type ChatModerationRequest struct {
-	Model string `json:"model"`
 	Input Input `json:"input"`
-	TruncateForContextLength *bool `json:"truncate_for_context_length,omitempty"`
+	Model string `json:"model"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -32,12 +31,10 @@ type _ChatModerationRequest ChatModerationRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChatModerationRequest(model string, input Input) *ChatModerationRequest {
+func NewChatModerationRequest(input Input, model string) *ChatModerationRequest {
 	this := ChatModerationRequest{}
-	this.Model = model
 	this.Input = input
-	var truncateForContextLength bool = false
-	this.TruncateForContextLength = &truncateForContextLength
+	this.Model = model
 	return &this
 }
 
@@ -46,33 +43,7 @@ func NewChatModerationRequest(model string, input Input) *ChatModerationRequest 
 // but it doesn't guarantee that properties required by API are set
 func NewChatModerationRequestWithDefaults() *ChatModerationRequest {
 	this := ChatModerationRequest{}
-	var truncateForContextLength bool = false
-	this.TruncateForContextLength = &truncateForContextLength
 	return &this
-}
-
-// GetModel returns the Model field value
-func (o *ChatModerationRequest) GetModel() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Model
-}
-
-// GetModelOk returns a tuple with the Model field value
-// and a boolean to check if the value has been set.
-func (o *ChatModerationRequest) GetModelOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Model, true
-}
-
-// SetModel sets field value
-func (o *ChatModerationRequest) SetModel(v string) {
-	o.Model = v
 }
 
 // GetInput returns the Input field value
@@ -99,36 +70,28 @@ func (o *ChatModerationRequest) SetInput(v Input) {
 	o.Input = v
 }
 
-// GetTruncateForContextLength returns the TruncateForContextLength field value if set, zero value otherwise.
-func (o *ChatModerationRequest) GetTruncateForContextLength() bool {
-	if o == nil || IsNil(o.TruncateForContextLength) {
-		var ret bool
+// GetModel returns the Model field value
+func (o *ChatModerationRequest) GetModel() string {
+	if o == nil {
+		var ret string
 		return ret
 	}
-	return *o.TruncateForContextLength
+
+	return o.Model
 }
 
-// GetTruncateForContextLengthOk returns a tuple with the TruncateForContextLength field value if set, nil otherwise
+// GetModelOk returns a tuple with the Model field value
 // and a boolean to check if the value has been set.
-func (o *ChatModerationRequest) GetTruncateForContextLengthOk() (*bool, bool) {
-	if o == nil || IsNil(o.TruncateForContextLength) {
+func (o *ChatModerationRequest) GetModelOk() (*string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TruncateForContextLength, true
+	return &o.Model, true
 }
 
-// HasTruncateForContextLength returns a boolean if a field has been set.
-func (o *ChatModerationRequest) HasTruncateForContextLength() bool {
-	if o != nil && !IsNil(o.TruncateForContextLength) {
-		return true
-	}
-
-	return false
-}
-
-// SetTruncateForContextLength gets a reference to the given bool and assigns it to the TruncateForContextLength field.
-func (o *ChatModerationRequest) SetTruncateForContextLength(v bool) {
-	o.TruncateForContextLength = &v
+// SetModel sets field value
+func (o *ChatModerationRequest) SetModel(v string) {
+	o.Model = v
 }
 
 func (o ChatModerationRequest) MarshalJSON() ([]byte, error) {
@@ -141,11 +104,8 @@ func (o ChatModerationRequest) MarshalJSON() ([]byte, error) {
 
 func (o ChatModerationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["model"] = o.Model
 	toSerialize["input"] = o.Input
-	if !IsNil(o.TruncateForContextLength) {
-		toSerialize["truncate_for_context_length"] = o.TruncateForContextLength
-	}
+	toSerialize["model"] = o.Model
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -159,8 +119,8 @@ func (o *ChatModerationRequest) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"model",
 		"input",
+		"model",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -190,9 +150,8 @@ func (o *ChatModerationRequest) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "model")
 		delete(additionalProperties, "input")
-		delete(additionalProperties, "truncate_for_context_length")
+		delete(additionalProperties, "model")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -245,7 +245,7 @@ func main() {
 	metadata := map[string]interface{}{"key": interface{}(123)} // map[string]interface{} |  (optional)
 	createdAfter := time.Now() // time.Time |  (optional)
 	createdByMe := true // bool |  (optional) (default to false)
-	status := openapiclient.BatchJobStatus("QUEUED") // BatchJobStatus |  (optional)
+	status := []openapiclient.BatchJobStatus{openapiclient.BatchJobStatus("QUEUED")} // []BatchJobStatus |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
  **metadata** | **map[string]interface{}** |  | 
  **createdAfter** | **time.Time** |  | 
  **createdByMe** | **bool** |  | [default to false]
- **status** | [**BatchJobStatus**](BatchJobStatus.md) |  | 
+ **status** | [**[]BatchJobStatus**](BatchJobStatus.md) |  | 
 
 ### Return type
 

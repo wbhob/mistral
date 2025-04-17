@@ -24,12 +24,15 @@ type JobIn struct {
 	Model FineTuneableModel `json:"model"`
 	TrainingFiles []TrainingFile `json:"training_files,omitempty"`
 	ValidationFiles []string `json:"validation_files,omitempty"`
-	Hyperparameters TrainingParametersIn `json:"hyperparameters"`
 	Suffix NullableString `json:"suffix,omitempty"`
 	Integrations []JobInIntegrationsInner `json:"integrations,omitempty"`
-	Repositories []JobInRepositoriesInner `json:"repositories,omitempty"`
 	// This field will be required in a future release.
 	AutoStart *bool `json:"auto_start,omitempty"`
+	InvalidSampleSkipPercentage *float32 `json:"invalid_sample_skip_percentage,omitempty"`
+	JobType NullableFineTuneableModelType `json:"job_type,omitempty"`
+	Hyperparameters Hyperparameters `json:"hyperparameters"`
+	Repositories []JobInRepositoriesInner `json:"repositories,omitempty"`
+	ClassifierTargets []ClassifierTargetIn `json:"classifier_targets,omitempty"`
 }
 
 type _JobIn JobIn
@@ -38,9 +41,11 @@ type _JobIn JobIn
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewJobIn(model FineTuneableModel, hyperparameters TrainingParametersIn) *JobIn {
+func NewJobIn(model FineTuneableModel, hyperparameters Hyperparameters) *JobIn {
 	this := JobIn{}
 	this.Model = model
+	var invalidSampleSkipPercentage float32 = 0
+	this.InvalidSampleSkipPercentage = &invalidSampleSkipPercentage
 	this.Hyperparameters = hyperparameters
 	return &this
 }
@@ -50,6 +55,8 @@ func NewJobIn(model FineTuneableModel, hyperparameters TrainingParametersIn) *Jo
 // but it doesn't guarantee that properties required by API are set
 func NewJobInWithDefaults() *JobIn {
 	this := JobIn{}
+	var invalidSampleSkipPercentage float32 = 0
+	this.InvalidSampleSkipPercentage = &invalidSampleSkipPercentage
 	return &this
 }
 
@@ -142,30 +149,6 @@ func (o *JobIn) SetValidationFiles(v []string) {
 	o.ValidationFiles = v
 }
 
-// GetHyperparameters returns the Hyperparameters field value
-func (o *JobIn) GetHyperparameters() TrainingParametersIn {
-	if o == nil {
-		var ret TrainingParametersIn
-		return ret
-	}
-
-	return o.Hyperparameters
-}
-
-// GetHyperparametersOk returns a tuple with the Hyperparameters field value
-// and a boolean to check if the value has been set.
-func (o *JobIn) GetHyperparametersOk() (*TrainingParametersIn, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Hyperparameters, true
-}
-
-// SetHyperparameters sets field value
-func (o *JobIn) SetHyperparameters(v TrainingParametersIn) {
-	o.Hyperparameters = v
-}
-
 // GetSuffix returns the Suffix field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JobIn) GetSuffix() string {
 	if o == nil || IsNil(o.Suffix.Get()) {
@@ -241,38 +224,6 @@ func (o *JobIn) SetIntegrations(v []JobInIntegrationsInner) {
 	o.Integrations = v
 }
 
-// GetRepositories returns the Repositories field value if set, zero value otherwise.
-func (o *JobIn) GetRepositories() []JobInRepositoriesInner {
-	if o == nil || IsNil(o.Repositories) {
-		var ret []JobInRepositoriesInner
-		return ret
-	}
-	return o.Repositories
-}
-
-// GetRepositoriesOk returns a tuple with the Repositories field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *JobIn) GetRepositoriesOk() ([]JobInRepositoriesInner, bool) {
-	if o == nil || IsNil(o.Repositories) {
-		return nil, false
-	}
-	return o.Repositories, true
-}
-
-// HasRepositories returns a boolean if a field has been set.
-func (o *JobIn) HasRepositories() bool {
-	if o != nil && !IsNil(o.Repositories) {
-		return true
-	}
-
-	return false
-}
-
-// SetRepositories gets a reference to the given []JobInRepositoriesInner and assigns it to the Repositories field.
-func (o *JobIn) SetRepositories(v []JobInRepositoriesInner) {
-	o.Repositories = v
-}
-
 // GetAutoStart returns the AutoStart field value if set, zero value otherwise.
 func (o *JobIn) GetAutoStart() bool {
 	if o == nil || IsNil(o.AutoStart) {
@@ -305,6 +256,170 @@ func (o *JobIn) SetAutoStart(v bool) {
 	o.AutoStart = &v
 }
 
+// GetInvalidSampleSkipPercentage returns the InvalidSampleSkipPercentage field value if set, zero value otherwise.
+func (o *JobIn) GetInvalidSampleSkipPercentage() float32 {
+	if o == nil || IsNil(o.InvalidSampleSkipPercentage) {
+		var ret float32
+		return ret
+	}
+	return *o.InvalidSampleSkipPercentage
+}
+
+// GetInvalidSampleSkipPercentageOk returns a tuple with the InvalidSampleSkipPercentage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobIn) GetInvalidSampleSkipPercentageOk() (*float32, bool) {
+	if o == nil || IsNil(o.InvalidSampleSkipPercentage) {
+		return nil, false
+	}
+	return o.InvalidSampleSkipPercentage, true
+}
+
+// HasInvalidSampleSkipPercentage returns a boolean if a field has been set.
+func (o *JobIn) HasInvalidSampleSkipPercentage() bool {
+	if o != nil && !IsNil(o.InvalidSampleSkipPercentage) {
+		return true
+	}
+
+	return false
+}
+
+// SetInvalidSampleSkipPercentage gets a reference to the given float32 and assigns it to the InvalidSampleSkipPercentage field.
+func (o *JobIn) SetInvalidSampleSkipPercentage(v float32) {
+	o.InvalidSampleSkipPercentage = &v
+}
+
+// GetJobType returns the JobType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *JobIn) GetJobType() FineTuneableModelType {
+	if o == nil || IsNil(o.JobType.Get()) {
+		var ret FineTuneableModelType
+		return ret
+	}
+	return *o.JobType.Get()
+}
+
+// GetJobTypeOk returns a tuple with the JobType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *JobIn) GetJobTypeOk() (*FineTuneableModelType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.JobType.Get(), o.JobType.IsSet()
+}
+
+// HasJobType returns a boolean if a field has been set.
+func (o *JobIn) HasJobType() bool {
+	if o != nil && o.JobType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetJobType gets a reference to the given NullableFineTuneableModelType and assigns it to the JobType field.
+func (o *JobIn) SetJobType(v FineTuneableModelType) {
+	o.JobType.Set(&v)
+}
+// SetJobTypeNil sets the value for JobType to be an explicit nil
+func (o *JobIn) SetJobTypeNil() {
+	o.JobType.Set(nil)
+}
+
+// UnsetJobType ensures that no value is present for JobType, not even an explicit nil
+func (o *JobIn) UnsetJobType() {
+	o.JobType.Unset()
+}
+
+// GetHyperparameters returns the Hyperparameters field value
+func (o *JobIn) GetHyperparameters() Hyperparameters {
+	if o == nil {
+		var ret Hyperparameters
+		return ret
+	}
+
+	return o.Hyperparameters
+}
+
+// GetHyperparametersOk returns a tuple with the Hyperparameters field value
+// and a boolean to check if the value has been set.
+func (o *JobIn) GetHyperparametersOk() (*Hyperparameters, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Hyperparameters, true
+}
+
+// SetHyperparameters sets field value
+func (o *JobIn) SetHyperparameters(v Hyperparameters) {
+	o.Hyperparameters = v
+}
+
+// GetRepositories returns the Repositories field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *JobIn) GetRepositories() []JobInRepositoriesInner {
+	if o == nil {
+		var ret []JobInRepositoriesInner
+		return ret
+	}
+	return o.Repositories
+}
+
+// GetRepositoriesOk returns a tuple with the Repositories field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *JobIn) GetRepositoriesOk() ([]JobInRepositoriesInner, bool) {
+	if o == nil || IsNil(o.Repositories) {
+		return nil, false
+	}
+	return o.Repositories, true
+}
+
+// HasRepositories returns a boolean if a field has been set.
+func (o *JobIn) HasRepositories() bool {
+	if o != nil && !IsNil(o.Repositories) {
+		return true
+	}
+
+	return false
+}
+
+// SetRepositories gets a reference to the given []JobInRepositoriesInner and assigns it to the Repositories field.
+func (o *JobIn) SetRepositories(v []JobInRepositoriesInner) {
+	o.Repositories = v
+}
+
+// GetClassifierTargets returns the ClassifierTargets field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *JobIn) GetClassifierTargets() []ClassifierTargetIn {
+	if o == nil {
+		var ret []ClassifierTargetIn
+		return ret
+	}
+	return o.ClassifierTargets
+}
+
+// GetClassifierTargetsOk returns a tuple with the ClassifierTargets field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *JobIn) GetClassifierTargetsOk() ([]ClassifierTargetIn, bool) {
+	if o == nil || IsNil(o.ClassifierTargets) {
+		return nil, false
+	}
+	return o.ClassifierTargets, true
+}
+
+// HasClassifierTargets returns a boolean if a field has been set.
+func (o *JobIn) HasClassifierTargets() bool {
+	if o != nil && !IsNil(o.ClassifierTargets) {
+		return true
+	}
+
+	return false
+}
+
+// SetClassifierTargets gets a reference to the given []ClassifierTargetIn and assigns it to the ClassifierTargets field.
+func (o *JobIn) SetClassifierTargets(v []ClassifierTargetIn) {
+	o.ClassifierTargets = v
+}
+
 func (o JobIn) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -322,18 +437,27 @@ func (o JobIn) ToMap() (map[string]interface{}, error) {
 	if o.ValidationFiles != nil {
 		toSerialize["validation_files"] = o.ValidationFiles
 	}
-	toSerialize["hyperparameters"] = o.Hyperparameters
 	if o.Suffix.IsSet() {
 		toSerialize["suffix"] = o.Suffix.Get()
 	}
 	if o.Integrations != nil {
 		toSerialize["integrations"] = o.Integrations
 	}
-	if !IsNil(o.Repositories) {
-		toSerialize["repositories"] = o.Repositories
-	}
 	if !IsNil(o.AutoStart) {
 		toSerialize["auto_start"] = o.AutoStart
+	}
+	if !IsNil(o.InvalidSampleSkipPercentage) {
+		toSerialize["invalid_sample_skip_percentage"] = o.InvalidSampleSkipPercentage
+	}
+	if o.JobType.IsSet() {
+		toSerialize["job_type"] = o.JobType.Get()
+	}
+	toSerialize["hyperparameters"] = o.Hyperparameters
+	if o.Repositories != nil {
+		toSerialize["repositories"] = o.Repositories
+	}
+	if o.ClassifierTargets != nil {
+		toSerialize["classifier_targets"] = o.ClassifierTargets
 	}
 	return toSerialize, nil
 }

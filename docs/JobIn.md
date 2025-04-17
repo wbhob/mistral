@@ -7,17 +7,20 @@ Name | Type | Description | Notes
 **Model** | [**FineTuneableModel**](FineTuneableModel.md) |  | 
 **TrainingFiles** | Pointer to [**[]TrainingFile**](TrainingFile.md) |  | [optional] [default to []]
 **ValidationFiles** | Pointer to **[]string** |  | [optional] 
-**Hyperparameters** | [**TrainingParametersIn**](TrainingParametersIn.md) |  | 
 **Suffix** | Pointer to **NullableString** |  | [optional] 
 **Integrations** | Pointer to [**[]JobInIntegrationsInner**](JobInIntegrationsInner.md) |  | [optional] 
-**Repositories** | Pointer to [**[]JobInRepositoriesInner**](JobInRepositoriesInner.md) |  | [optional] [default to []]
 **AutoStart** | Pointer to **bool** | This field will be required in a future release. | [optional] 
+**InvalidSampleSkipPercentage** | Pointer to **float32** |  | [optional] [default to 0]
+**JobType** | Pointer to [**NullableFineTuneableModelType**](FineTuneableModelType.md) |  | [optional] 
+**Hyperparameters** | [**Hyperparameters**](Hyperparameters.md) |  | 
+**Repositories** | Pointer to [**[]JobInRepositoriesInner**](JobInRepositoriesInner.md) |  | [optional] 
+**ClassifierTargets** | Pointer to [**[]ClassifierTargetIn**](ClassifierTargetIn.md) |  | [optional] 
 
 ## Methods
 
 ### NewJobIn
 
-`func NewJobIn(model FineTuneableModel, hyperparameters TrainingParametersIn, ) *JobIn`
+`func NewJobIn(model FineTuneableModel, hyperparameters Hyperparameters, ) *JobIn`
 
 NewJobIn instantiates a new JobIn object
 This constructor will assign default values to properties that have it defined,
@@ -112,26 +115,6 @@ HasValidationFiles returns a boolean if a field has been set.
 `func (o *JobIn) UnsetValidationFiles()`
 
 UnsetValidationFiles ensures that no value is present for ValidationFiles, not even an explicit nil
-### GetHyperparameters
-
-`func (o *JobIn) GetHyperparameters() TrainingParametersIn`
-
-GetHyperparameters returns the Hyperparameters field if non-nil, zero value otherwise.
-
-### GetHyperparametersOk
-
-`func (o *JobIn) GetHyperparametersOk() (*TrainingParametersIn, bool)`
-
-GetHyperparametersOk returns a tuple with the Hyperparameters field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetHyperparameters
-
-`func (o *JobIn) SetHyperparameters(v TrainingParametersIn)`
-
-SetHyperparameters sets Hyperparameters field to given value.
-
-
 ### GetSuffix
 
 `func (o *JobIn) GetSuffix() string`
@@ -202,31 +185,6 @@ HasIntegrations returns a boolean if a field has been set.
 `func (o *JobIn) UnsetIntegrations()`
 
 UnsetIntegrations ensures that no value is present for Integrations, not even an explicit nil
-### GetRepositories
-
-`func (o *JobIn) GetRepositories() []JobInRepositoriesInner`
-
-GetRepositories returns the Repositories field if non-nil, zero value otherwise.
-
-### GetRepositoriesOk
-
-`func (o *JobIn) GetRepositoriesOk() (*[]JobInRepositoriesInner, bool)`
-
-GetRepositoriesOk returns a tuple with the Repositories field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRepositories
-
-`func (o *JobIn) SetRepositories(v []JobInRepositoriesInner)`
-
-SetRepositories sets Repositories field to given value.
-
-### HasRepositories
-
-`func (o *JobIn) HasRepositories() bool`
-
-HasRepositories returns a boolean if a field has been set.
-
 ### GetAutoStart
 
 `func (o *JobIn) GetAutoStart() bool`
@@ -252,6 +210,156 @@ SetAutoStart sets AutoStart field to given value.
 
 HasAutoStart returns a boolean if a field has been set.
 
+### GetInvalidSampleSkipPercentage
+
+`func (o *JobIn) GetInvalidSampleSkipPercentage() float32`
+
+GetInvalidSampleSkipPercentage returns the InvalidSampleSkipPercentage field if non-nil, zero value otherwise.
+
+### GetInvalidSampleSkipPercentageOk
+
+`func (o *JobIn) GetInvalidSampleSkipPercentageOk() (*float32, bool)`
+
+GetInvalidSampleSkipPercentageOk returns a tuple with the InvalidSampleSkipPercentage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInvalidSampleSkipPercentage
+
+`func (o *JobIn) SetInvalidSampleSkipPercentage(v float32)`
+
+SetInvalidSampleSkipPercentage sets InvalidSampleSkipPercentage field to given value.
+
+### HasInvalidSampleSkipPercentage
+
+`func (o *JobIn) HasInvalidSampleSkipPercentage() bool`
+
+HasInvalidSampleSkipPercentage returns a boolean if a field has been set.
+
+### GetJobType
+
+`func (o *JobIn) GetJobType() FineTuneableModelType`
+
+GetJobType returns the JobType field if non-nil, zero value otherwise.
+
+### GetJobTypeOk
+
+`func (o *JobIn) GetJobTypeOk() (*FineTuneableModelType, bool)`
+
+GetJobTypeOk returns a tuple with the JobType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJobType
+
+`func (o *JobIn) SetJobType(v FineTuneableModelType)`
+
+SetJobType sets JobType field to given value.
+
+### HasJobType
+
+`func (o *JobIn) HasJobType() bool`
+
+HasJobType returns a boolean if a field has been set.
+
+### SetJobTypeNil
+
+`func (o *JobIn) SetJobTypeNil(b bool)`
+
+ SetJobTypeNil sets the value for JobType to be an explicit nil
+
+### UnsetJobType
+`func (o *JobIn) UnsetJobType()`
+
+UnsetJobType ensures that no value is present for JobType, not even an explicit nil
+### GetHyperparameters
+
+`func (o *JobIn) GetHyperparameters() Hyperparameters`
+
+GetHyperparameters returns the Hyperparameters field if non-nil, zero value otherwise.
+
+### GetHyperparametersOk
+
+`func (o *JobIn) GetHyperparametersOk() (*Hyperparameters, bool)`
+
+GetHyperparametersOk returns a tuple with the Hyperparameters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHyperparameters
+
+`func (o *JobIn) SetHyperparameters(v Hyperparameters)`
+
+SetHyperparameters sets Hyperparameters field to given value.
+
+
+### GetRepositories
+
+`func (o *JobIn) GetRepositories() []JobInRepositoriesInner`
+
+GetRepositories returns the Repositories field if non-nil, zero value otherwise.
+
+### GetRepositoriesOk
+
+`func (o *JobIn) GetRepositoriesOk() (*[]JobInRepositoriesInner, bool)`
+
+GetRepositoriesOk returns a tuple with the Repositories field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRepositories
+
+`func (o *JobIn) SetRepositories(v []JobInRepositoriesInner)`
+
+SetRepositories sets Repositories field to given value.
+
+### HasRepositories
+
+`func (o *JobIn) HasRepositories() bool`
+
+HasRepositories returns a boolean if a field has been set.
+
+### SetRepositoriesNil
+
+`func (o *JobIn) SetRepositoriesNil(b bool)`
+
+ SetRepositoriesNil sets the value for Repositories to be an explicit nil
+
+### UnsetRepositories
+`func (o *JobIn) UnsetRepositories()`
+
+UnsetRepositories ensures that no value is present for Repositories, not even an explicit nil
+### GetClassifierTargets
+
+`func (o *JobIn) GetClassifierTargets() []ClassifierTargetIn`
+
+GetClassifierTargets returns the ClassifierTargets field if non-nil, zero value otherwise.
+
+### GetClassifierTargetsOk
+
+`func (o *JobIn) GetClassifierTargetsOk() (*[]ClassifierTargetIn, bool)`
+
+GetClassifierTargetsOk returns a tuple with the ClassifierTargets field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassifierTargets
+
+`func (o *JobIn) SetClassifierTargets(v []ClassifierTargetIn)`
+
+SetClassifierTargets sets ClassifierTargets field to given value.
+
+### HasClassifierTargets
+
+`func (o *JobIn) HasClassifierTargets() bool`
+
+HasClassifierTargets returns a boolean if a field has been set.
+
+### SetClassifierTargetsNil
+
+`func (o *JobIn) SetClassifierTargetsNil(b bool)`
+
+ SetClassifierTargetsNil sets the value for ClassifierTargets to be an explicit nil
+
+### UnsetClassifierTargets
+`func (o *JobIn) UnsetClassifierTargets()`
+
+UnsetClassifierTargets ensures that no value is present for ClassifierTargets, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

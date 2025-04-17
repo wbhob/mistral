@@ -22,6 +22,18 @@ import (
 type ClassifiersAPI interface {
 
 	/*
+	ChatClassificationsV1ChatClassificationsPost Chat Classifications
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiChatClassificationsV1ChatClassificationsPostRequest
+	*/
+	ChatClassificationsV1ChatClassificationsPost(ctx context.Context) ApiChatClassificationsV1ChatClassificationsPostRequest
+
+	// ChatClassificationsV1ChatClassificationsPostExecute executes the request
+	//  @return ClassificationResponse
+	ChatClassificationsV1ChatClassificationsPostExecute(r ApiChatClassificationsV1ChatClassificationsPostRequest) (*ClassificationResponse, *http.Response, error)
+
+	/*
 	ChatModerationsV1ChatModerationsPost Chat Moderations
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -30,8 +42,20 @@ type ClassifiersAPI interface {
 	ChatModerationsV1ChatModerationsPost(ctx context.Context) ApiChatModerationsV1ChatModerationsPostRequest
 
 	// ChatModerationsV1ChatModerationsPostExecute executes the request
+	//  @return ModerationResponse
+	ChatModerationsV1ChatModerationsPostExecute(r ApiChatModerationsV1ChatModerationsPostRequest) (*ModerationResponse, *http.Response, error)
+
+	/*
+	ClassificationsV1ClassificationsPost Classifications
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiClassificationsV1ClassificationsPostRequest
+	*/
+	ClassificationsV1ClassificationsPost(ctx context.Context) ApiClassificationsV1ClassificationsPostRequest
+
+	// ClassificationsV1ClassificationsPostExecute executes the request
 	//  @return ClassificationResponse
-	ChatModerationsV1ChatModerationsPostExecute(r ApiChatModerationsV1ChatModerationsPostRequest) (*ClassificationResponse, *http.Response, error)
+	ClassificationsV1ClassificationsPostExecute(r ApiClassificationsV1ClassificationsPostRequest) (*ClassificationResponse, *http.Response, error)
 
 	/*
 	ModerationsV1ModerationsPost Moderations
@@ -42,12 +66,130 @@ type ClassifiersAPI interface {
 	ModerationsV1ModerationsPost(ctx context.Context) ApiModerationsV1ModerationsPostRequest
 
 	// ModerationsV1ModerationsPostExecute executes the request
-	//  @return ClassificationResponse
-	ModerationsV1ModerationsPostExecute(r ApiModerationsV1ModerationsPostRequest) (*ClassificationResponse, *http.Response, error)
+	//  @return ModerationResponse
+	ModerationsV1ModerationsPostExecute(r ApiModerationsV1ModerationsPostRequest) (*ModerationResponse, *http.Response, error)
 }
 
 // ClassifiersAPIService ClassifiersAPI service
 type ClassifiersAPIService service
+
+type ApiChatClassificationsV1ChatClassificationsPostRequest struct {
+	ctx context.Context
+	ApiService ClassifiersAPI
+	chatClassificationRequest *ChatClassificationRequest
+}
+
+func (r ApiChatClassificationsV1ChatClassificationsPostRequest) ChatClassificationRequest(chatClassificationRequest ChatClassificationRequest) ApiChatClassificationsV1ChatClassificationsPostRequest {
+	r.chatClassificationRequest = &chatClassificationRequest
+	return r
+}
+
+func (r ApiChatClassificationsV1ChatClassificationsPostRequest) Execute() (*ClassificationResponse, *http.Response, error) {
+	return r.ApiService.ChatClassificationsV1ChatClassificationsPostExecute(r)
+}
+
+/*
+ChatClassificationsV1ChatClassificationsPost Chat Classifications
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiChatClassificationsV1ChatClassificationsPostRequest
+*/
+func (a *ClassifiersAPIService) ChatClassificationsV1ChatClassificationsPost(ctx context.Context) ApiChatClassificationsV1ChatClassificationsPostRequest {
+	return ApiChatClassificationsV1ChatClassificationsPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ClassificationResponse
+func (a *ClassifiersAPIService) ChatClassificationsV1ChatClassificationsPostExecute(r ApiChatClassificationsV1ChatClassificationsPostRequest) (*ClassificationResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ClassificationResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClassifiersAPIService.ChatClassificationsV1ChatClassificationsPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/chat/classifications"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.chatClassificationRequest == nil {
+		return localVarReturnValue, nil, reportError("chatClassificationRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.chatClassificationRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 422 {
+			var v HTTPValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
 
 type ApiChatModerationsV1ChatModerationsPostRequest struct {
 	ctx context.Context
@@ -60,7 +202,7 @@ func (r ApiChatModerationsV1ChatModerationsPostRequest) ChatModerationRequest(ch
 	return r
 }
 
-func (r ApiChatModerationsV1ChatModerationsPostRequest) Execute() (*ClassificationResponse, *http.Response, error) {
+func (r ApiChatModerationsV1ChatModerationsPostRequest) Execute() (*ModerationResponse, *http.Response, error) {
 	return r.ApiService.ChatModerationsV1ChatModerationsPostExecute(r)
 }
 
@@ -78,13 +220,13 @@ func (a *ClassifiersAPIService) ChatModerationsV1ChatModerationsPost(ctx context
 }
 
 // Execute executes the request
-//  @return ClassificationResponse
-func (a *ClassifiersAPIService) ChatModerationsV1ChatModerationsPostExecute(r ApiChatModerationsV1ChatModerationsPostRequest) (*ClassificationResponse, *http.Response, error) {
+//  @return ModerationResponse
+func (a *ClassifiersAPIService) ChatModerationsV1ChatModerationsPostExecute(r ApiChatModerationsV1ChatModerationsPostRequest) (*ModerationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ClassificationResponse
+		localVarReturnValue  *ModerationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClassifiersAPIService.ChatModerationsV1ChatModerationsPost")
@@ -167,6 +309,124 @@ func (a *ClassifiersAPIService) ChatModerationsV1ChatModerationsPostExecute(r Ap
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiClassificationsV1ClassificationsPostRequest struct {
+	ctx context.Context
+	ApiService ClassifiersAPI
+	classificationRequest *ClassificationRequest
+}
+
+func (r ApiClassificationsV1ClassificationsPostRequest) ClassificationRequest(classificationRequest ClassificationRequest) ApiClassificationsV1ClassificationsPostRequest {
+	r.classificationRequest = &classificationRequest
+	return r
+}
+
+func (r ApiClassificationsV1ClassificationsPostRequest) Execute() (*ClassificationResponse, *http.Response, error) {
+	return r.ApiService.ClassificationsV1ClassificationsPostExecute(r)
+}
+
+/*
+ClassificationsV1ClassificationsPost Classifications
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiClassificationsV1ClassificationsPostRequest
+*/
+func (a *ClassifiersAPIService) ClassificationsV1ClassificationsPost(ctx context.Context) ApiClassificationsV1ClassificationsPostRequest {
+	return ApiClassificationsV1ClassificationsPostRequest{
+		ApiService: a,
+		ctx: ctx,
+	}
+}
+
+// Execute executes the request
+//  @return ClassificationResponse
+func (a *ClassifiersAPIService) ClassificationsV1ClassificationsPostExecute(r ApiClassificationsV1ClassificationsPostRequest) (*ClassificationResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod   = http.MethodPost
+		localVarPostBody     interface{}
+		formFiles            []formFile
+		localVarReturnValue  *ClassificationResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClassifiersAPIService.ClassificationsV1ClassificationsPost")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/classifications"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.classificationRequest == nil {
+		return localVarReturnValue, nil, reportError("classificationRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.classificationRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		if localVarHTTPResponse.StatusCode == 422 {
+			var v HTTPValidationError
+			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+			if err != nil {
+				newErr.error = err.Error()
+				return localVarReturnValue, localVarHTTPResponse, newErr
+			}
+					newErr.error = formatErrorMessage(localVarHTTPResponse.Status, &v)
+					newErr.model = v
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiModerationsV1ModerationsPostRequest struct {
 	ctx context.Context
 	ApiService ClassifiersAPI
@@ -178,7 +438,7 @@ func (r ApiModerationsV1ModerationsPostRequest) ClassificationRequest(classifica
 	return r
 }
 
-func (r ApiModerationsV1ModerationsPostRequest) Execute() (*ClassificationResponse, *http.Response, error) {
+func (r ApiModerationsV1ModerationsPostRequest) Execute() (*ModerationResponse, *http.Response, error) {
 	return r.ApiService.ModerationsV1ModerationsPostExecute(r)
 }
 
@@ -196,13 +456,13 @@ func (a *ClassifiersAPIService) ModerationsV1ModerationsPost(ctx context.Context
 }
 
 // Execute executes the request
-//  @return ClassificationResponse
-func (a *ClassifiersAPIService) ModerationsV1ModerationsPostExecute(r ApiModerationsV1ModerationsPostRequest) (*ClassificationResponse, *http.Response, error) {
+//  @return ModerationResponse
+func (a *ClassifiersAPIService) ModerationsV1ModerationsPostExecute(r ApiModerationsV1ModerationsPostRequest) (*ModerationResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ClassificationResponse
+		localVarReturnValue  *ModerationResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClassifiersAPIService.ModerationsV1ModerationsPost")

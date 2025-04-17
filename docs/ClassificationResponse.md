@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to **string** |  | [optional] 
-**Model** | Pointer to **string** |  | [optional] 
-**Results** | Pointer to **[]interface{}** |  | [optional] 
+**Id** | **string** |  | 
+**Model** | **string** |  | 
+**Results** | [**[]map[string]ClassificationTargetResult**](map[string]ClassificationTargetResult.md) |  | 
 
 ## Methods
 
 ### NewClassificationResponse
 
-`func NewClassificationResponse() *ClassificationResponse`
+`func NewClassificationResponse(id string, model string, results []map[string]ClassificationTargetResult, ) *ClassificationResponse`
 
 NewClassificationResponse instantiates a new ClassificationResponse object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
-### HasId
-
-`func (o *ClassificationResponse) HasId() bool`
-
-HasId returns a boolean if a field has been set.
 
 ### GetModel
 
@@ -71,36 +66,26 @@ and a boolean to check if the value has been set.
 
 SetModel sets Model field to given value.
 
-### HasModel
-
-`func (o *ClassificationResponse) HasModel() bool`
-
-HasModel returns a boolean if a field has been set.
 
 ### GetResults
 
-`func (o *ClassificationResponse) GetResults() []interface{}`
+`func (o *ClassificationResponse) GetResults() []map[string]ClassificationTargetResult`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *ClassificationResponse) GetResultsOk() (*[]interface{}, bool)`
+`func (o *ClassificationResponse) GetResultsOk() (*[]map[string]ClassificationTargetResult, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *ClassificationResponse) SetResults(v []interface{})`
+`func (o *ClassificationResponse) SetResults(v []map[string]ClassificationTargetResult)`
 
 SetResults sets Results field to given value.
 
-### HasResults
-
-`func (o *ClassificationResponse) HasResults() bool`
-
-HasResults returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

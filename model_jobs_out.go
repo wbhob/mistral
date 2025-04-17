@@ -21,7 +21,7 @@ var _ MappedNullable = &JobsOut{}
 
 // JobsOut struct for JobsOut
 type JobsOut struct {
-	Data []JobOut `json:"data,omitempty"`
+	Data []ResponseAnyOf `json:"data,omitempty"`
 	Object *string `json:"object,omitempty"`
 	Total int32 `json:"total"`
 }
@@ -51,9 +51,9 @@ func NewJobsOutWithDefaults() *JobsOut {
 }
 
 // GetData returns the Data field value if set, zero value otherwise.
-func (o *JobsOut) GetData() []JobOut {
+func (o *JobsOut) GetData() []ResponseAnyOf {
 	if o == nil || IsNil(o.Data) {
-		var ret []JobOut
+		var ret []ResponseAnyOf
 		return ret
 	}
 	return o.Data
@@ -61,7 +61,7 @@ func (o *JobsOut) GetData() []JobOut {
 
 // GetDataOk returns a tuple with the Data field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *JobsOut) GetDataOk() ([]JobOut, bool) {
+func (o *JobsOut) GetDataOk() ([]ResponseAnyOf, bool) {
 	if o == nil || IsNil(o.Data) {
 		return nil, false
 	}
@@ -77,8 +77,8 @@ func (o *JobsOut) HasData() bool {
 	return false
 }
 
-// SetData gets a reference to the given []JobOut and assigns it to the Data field.
-func (o *JobsOut) SetData(v []JobOut) {
+// SetData gets a reference to the given []ResponseAnyOf and assigns it to the Data field.
+func (o *JobsOut) SetData(v []ResponseAnyOf) {
 	o.Data = v
 }
 

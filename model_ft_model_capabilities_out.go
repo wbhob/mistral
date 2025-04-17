@@ -23,6 +23,7 @@ type FTModelCapabilitiesOut struct {
 	CompletionFim *bool `json:"completion_fim,omitempty"`
 	FunctionCalling *bool `json:"function_calling,omitempty"`
 	FineTuning *bool `json:"fine_tuning,omitempty"`
+	Classification *bool `json:"classification,omitempty"`
 }
 
 // NewFTModelCapabilitiesOut instantiates a new FTModelCapabilitiesOut object
@@ -39,6 +40,8 @@ func NewFTModelCapabilitiesOut() *FTModelCapabilitiesOut {
 	this.FunctionCalling = &functionCalling
 	var fineTuning bool = false
 	this.FineTuning = &fineTuning
+	var classification bool = false
+	this.Classification = &classification
 	return &this
 }
 
@@ -55,6 +58,8 @@ func NewFTModelCapabilitiesOutWithDefaults() *FTModelCapabilitiesOut {
 	this.FunctionCalling = &functionCalling
 	var fineTuning bool = false
 	this.FineTuning = &fineTuning
+	var classification bool = false
+	this.Classification = &classification
 	return &this
 }
 
@@ -186,6 +191,38 @@ func (o *FTModelCapabilitiesOut) SetFineTuning(v bool) {
 	o.FineTuning = &v
 }
 
+// GetClassification returns the Classification field value if set, zero value otherwise.
+func (o *FTModelCapabilitiesOut) GetClassification() bool {
+	if o == nil || IsNil(o.Classification) {
+		var ret bool
+		return ret
+	}
+	return *o.Classification
+}
+
+// GetClassificationOk returns a tuple with the Classification field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *FTModelCapabilitiesOut) GetClassificationOk() (*bool, bool) {
+	if o == nil || IsNil(o.Classification) {
+		return nil, false
+	}
+	return o.Classification, true
+}
+
+// HasClassification returns a boolean if a field has been set.
+func (o *FTModelCapabilitiesOut) HasClassification() bool {
+	if o != nil && !IsNil(o.Classification) {
+		return true
+	}
+
+	return false
+}
+
+// SetClassification gets a reference to the given bool and assigns it to the Classification field.
+func (o *FTModelCapabilitiesOut) SetClassification(v bool) {
+	o.Classification = &v
+}
+
 func (o FTModelCapabilitiesOut) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -207,6 +244,9 @@ func (o FTModelCapabilitiesOut) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.FineTuning) {
 		toSerialize["fine_tuning"] = o.FineTuning
+	}
+	if !IsNil(o.Classification) {
+		toSerialize["classification"] = o.Classification
 	}
 	return toSerialize, nil
 }

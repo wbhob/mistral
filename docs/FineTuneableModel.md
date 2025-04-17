@@ -15,6 +15,8 @@
 
 * `MINISTRAL_3B_LATEST` (value: `"ministral-3b-latest"`)
 
+* `MINISTRAL_8B_LATEST` (value: `"ministral-8b-latest"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
