@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **BottomRightX** | **NullableInt32** |  | 
 **BottomRightY** | **NullableInt32** |  | 
 **ImageBase64** | Pointer to **NullableString** |  | [optional] 
+**ImageAnnotation** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -205,6 +206,41 @@ HasImageBase64 returns a boolean if a field has been set.
 `func (o *OCRImageObject) UnsetImageBase64()`
 
 UnsetImageBase64 ensures that no value is present for ImageBase64, not even an explicit nil
+### GetImageAnnotation
+
+`func (o *OCRImageObject) GetImageAnnotation() string`
+
+GetImageAnnotation returns the ImageAnnotation field if non-nil, zero value otherwise.
+
+### GetImageAnnotationOk
+
+`func (o *OCRImageObject) GetImageAnnotationOk() (*string, bool)`
+
+GetImageAnnotationOk returns a tuple with the ImageAnnotation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetImageAnnotation
+
+`func (o *OCRImageObject) SetImageAnnotation(v string)`
+
+SetImageAnnotation sets ImageAnnotation field to given value.
+
+### HasImageAnnotation
+
+`func (o *OCRImageObject) HasImageAnnotation() bool`
+
+HasImageAnnotation returns a boolean if a field has been set.
+
+### SetImageAnnotationNil
+
+`func (o *OCRImageObject) SetImageAnnotationNil(b bool)`
+
+ SetImageAnnotationNil sets the value for ImageAnnotation to be an explicit nil
+
+### UnsetImageAnnotation
+`func (o *OCRImageObject) UnsetImageAnnotation()`
+
+UnsetImageAnnotation ensures that no value is present for ImageAnnotation, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

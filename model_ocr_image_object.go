@@ -27,6 +27,7 @@ type OCRImageObject struct {
 	BottomRightX NullableInt32 `json:"bottom_right_x"`
 	BottomRightY NullableInt32 `json:"bottom_right_y"`
 	ImageBase64 NullableString `json:"image_base64,omitempty"`
+	ImageAnnotation NullableString `json:"image_annotation,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -224,6 +225,48 @@ func (o *OCRImageObject) UnsetImageBase64() {
 	o.ImageBase64.Unset()
 }
 
+// GetImageAnnotation returns the ImageAnnotation field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OCRImageObject) GetImageAnnotation() string {
+	if o == nil || IsNil(o.ImageAnnotation.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ImageAnnotation.Get()
+}
+
+// GetImageAnnotationOk returns a tuple with the ImageAnnotation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OCRImageObject) GetImageAnnotationOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ImageAnnotation.Get(), o.ImageAnnotation.IsSet()
+}
+
+// HasImageAnnotation returns a boolean if a field has been set.
+func (o *OCRImageObject) HasImageAnnotation() bool {
+	if o != nil && o.ImageAnnotation.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetImageAnnotation gets a reference to the given NullableString and assigns it to the ImageAnnotation field.
+func (o *OCRImageObject) SetImageAnnotation(v string) {
+	o.ImageAnnotation.Set(&v)
+}
+// SetImageAnnotationNil sets the value for ImageAnnotation to be an explicit nil
+func (o *OCRImageObject) SetImageAnnotationNil() {
+	o.ImageAnnotation.Set(nil)
+}
+
+// UnsetImageAnnotation ensures that no value is present for ImageAnnotation, not even an explicit nil
+func (o *OCRImageObject) UnsetImageAnnotation() {
+	o.ImageAnnotation.Unset()
+}
+
 func (o OCRImageObject) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -241,6 +284,9 @@ func (o OCRImageObject) ToMap() (map[string]interface{}, error) {
 	toSerialize["bottom_right_y"] = o.BottomRightY.Get()
 	if o.ImageBase64.IsSet() {
 		toSerialize["image_base64"] = o.ImageBase64.Get()
+	}
+	if o.ImageAnnotation.IsSet() {
+		toSerialize["image_annotation"] = o.ImageAnnotation.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -295,6 +341,7 @@ func (o *OCRImageObject) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "bottom_right_x")
 		delete(additionalProperties, "bottom_right_y")
 		delete(additionalProperties, "image_base64")
+		delete(additionalProperties, "image_annotation")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **Model** | Pointer to **string** |  | [optional] 
 **Usage** | Pointer to [**UsageInfo**](UsageInfo.md) |  | [optional] 
 **Created** | Pointer to **int32** |  | [optional] 
-**Choices** | Pointer to [**[]ChatCompletionChoice**](ChatCompletionChoice.md) |  | [optional] 
+**Choices** | [**[]ChatCompletionChoice**](ChatCompletionChoice.md) |  | 
 
 ## Methods
 
 ### NewFIMCompletionResponse
 
-`func NewFIMCompletionResponse() *FIMCompletionResponse`
+`func NewFIMCompletionResponse(choices []ChatCompletionChoice, ) *FIMCompletionResponse`
 
 NewFIMCompletionResponse instantiates a new FIMCompletionResponse object
 This constructor will assign default values to properties that have it defined,
@@ -174,11 +174,6 @@ and a boolean to check if the value has been set.
 
 SetChoices sets Choices field to given value.
 
-### HasChoices
-
-`func (o *FIMCompletionResponse) HasChoices() bool`
-
-HasChoices returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

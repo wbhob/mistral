@@ -18,24 +18,24 @@ import (
 
 // Content1 struct for Content1
 type Content1 struct {
-	ArrayOfTextChunk *[]TextChunk
+	ArrayOfMessageOutputContentChunksInner *[]MessageOutputContentChunksInner
 	String *string
 }
 
 // Unmarshal JSON data into any of the pointers in the struct
 func (dst *Content1) UnmarshalJSON(data []byte) error {
 	var err error
-	// try to unmarshal JSON data into ArrayOfTextChunk
-	err = json.Unmarshal(data, &dst.ArrayOfTextChunk);
+	// try to unmarshal JSON data into ArrayOfMessageOutputContentChunksInner
+	err = json.Unmarshal(data, &dst.ArrayOfMessageOutputContentChunksInner);
 	if err == nil {
-		jsonArrayOfTextChunk, _ := json.Marshal(dst.ArrayOfTextChunk)
-		if string(jsonArrayOfTextChunk) == "{}" { // empty struct
-			dst.ArrayOfTextChunk = nil
+		jsonArrayOfMessageOutputContentChunksInner, _ := json.Marshal(dst.ArrayOfMessageOutputContentChunksInner)
+		if string(jsonArrayOfMessageOutputContentChunksInner) == "{}" { // empty struct
+			dst.ArrayOfMessageOutputContentChunksInner = nil
 		} else {
-			return nil // data stored in dst.ArrayOfTextChunk, return on the first match
+			return nil // data stored in dst.ArrayOfMessageOutputContentChunksInner, return on the first match
 		}
 	} else {
-		dst.ArrayOfTextChunk = nil
+		dst.ArrayOfMessageOutputContentChunksInner = nil
 	}
 
 	// try to unmarshal JSON data into String
@@ -56,8 +56,8 @@ func (dst *Content1) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src Content1) MarshalJSON() ([]byte, error) {
-	if src.ArrayOfTextChunk != nil {
-		return json.Marshal(&src.ArrayOfTextChunk)
+	if src.ArrayOfMessageOutputContentChunksInner != nil {
+		return json.Marshal(&src.ArrayOfMessageOutputContentChunksInner)
 	}
 
 	if src.String != nil {

@@ -27,6 +27,8 @@ type OCRRequest struct {
 	IncludeImageBase64 NullableBool `json:"include_image_base64,omitempty"`
 	ImageLimit NullableInt32 `json:"image_limit,omitempty"`
 	ImageMinSize NullableInt32 `json:"image_min_size,omitempty"`
+	BboxAnnotationFormat NullableResponseFormat `json:"bbox_annotation_format,omitempty"`
+	DocumentAnnotationFormat NullableResponseFormat `json:"document_annotation_format,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -292,6 +294,90 @@ func (o *OCRRequest) UnsetImageMinSize() {
 	o.ImageMinSize.Unset()
 }
 
+// GetBboxAnnotationFormat returns the BboxAnnotationFormat field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OCRRequest) GetBboxAnnotationFormat() ResponseFormat {
+	if o == nil || IsNil(o.BboxAnnotationFormat.Get()) {
+		var ret ResponseFormat
+		return ret
+	}
+	return *o.BboxAnnotationFormat.Get()
+}
+
+// GetBboxAnnotationFormatOk returns a tuple with the BboxAnnotationFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OCRRequest) GetBboxAnnotationFormatOk() (*ResponseFormat, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BboxAnnotationFormat.Get(), o.BboxAnnotationFormat.IsSet()
+}
+
+// HasBboxAnnotationFormat returns a boolean if a field has been set.
+func (o *OCRRequest) HasBboxAnnotationFormat() bool {
+	if o != nil && o.BboxAnnotationFormat.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBboxAnnotationFormat gets a reference to the given NullableResponseFormat and assigns it to the BboxAnnotationFormat field.
+func (o *OCRRequest) SetBboxAnnotationFormat(v ResponseFormat) {
+	o.BboxAnnotationFormat.Set(&v)
+}
+// SetBboxAnnotationFormatNil sets the value for BboxAnnotationFormat to be an explicit nil
+func (o *OCRRequest) SetBboxAnnotationFormatNil() {
+	o.BboxAnnotationFormat.Set(nil)
+}
+
+// UnsetBboxAnnotationFormat ensures that no value is present for BboxAnnotationFormat, not even an explicit nil
+func (o *OCRRequest) UnsetBboxAnnotationFormat() {
+	o.BboxAnnotationFormat.Unset()
+}
+
+// GetDocumentAnnotationFormat returns the DocumentAnnotationFormat field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OCRRequest) GetDocumentAnnotationFormat() ResponseFormat {
+	if o == nil || IsNil(o.DocumentAnnotationFormat.Get()) {
+		var ret ResponseFormat
+		return ret
+	}
+	return *o.DocumentAnnotationFormat.Get()
+}
+
+// GetDocumentAnnotationFormatOk returns a tuple with the DocumentAnnotationFormat field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OCRRequest) GetDocumentAnnotationFormatOk() (*ResponseFormat, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DocumentAnnotationFormat.Get(), o.DocumentAnnotationFormat.IsSet()
+}
+
+// HasDocumentAnnotationFormat returns a boolean if a field has been set.
+func (o *OCRRequest) HasDocumentAnnotationFormat() bool {
+	if o != nil && o.DocumentAnnotationFormat.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDocumentAnnotationFormat gets a reference to the given NullableResponseFormat and assigns it to the DocumentAnnotationFormat field.
+func (o *OCRRequest) SetDocumentAnnotationFormat(v ResponseFormat) {
+	o.DocumentAnnotationFormat.Set(&v)
+}
+// SetDocumentAnnotationFormatNil sets the value for DocumentAnnotationFormat to be an explicit nil
+func (o *OCRRequest) SetDocumentAnnotationFormatNil() {
+	o.DocumentAnnotationFormat.Set(nil)
+}
+
+// UnsetDocumentAnnotationFormat ensures that no value is present for DocumentAnnotationFormat, not even an explicit nil
+func (o *OCRRequest) UnsetDocumentAnnotationFormat() {
+	o.DocumentAnnotationFormat.Unset()
+}
+
 func (o OCRRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -318,6 +404,12 @@ func (o OCRRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ImageMinSize.IsSet() {
 		toSerialize["image_min_size"] = o.ImageMinSize.Get()
+	}
+	if o.BboxAnnotationFormat.IsSet() {
+		toSerialize["bbox_annotation_format"] = o.BboxAnnotationFormat.Get()
+	}
+	if o.DocumentAnnotationFormat.IsSet() {
+		toSerialize["document_annotation_format"] = o.DocumentAnnotationFormat.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -370,6 +462,8 @@ func (o *OCRRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "include_image_base64")
 		delete(additionalProperties, "image_limit")
 		delete(additionalProperties, "image_min_size")
+		delete(additionalProperties, "bbox_annotation_format")
+		delete(additionalProperties, "document_annotation_format")
 		o.AdditionalProperties = additionalProperties
 	}
 

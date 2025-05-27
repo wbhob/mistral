@@ -53,6 +53,10 @@ type APIClient struct {
 
 	BatchAPI BatchAPI
 
+	BetaAgentsAPI BetaAgentsAPI
+
+	BetaConversationsAPI BetaConversationsAPI
+
 	ChatAPI ChatAPI
 
 	ClassifiersAPI ClassifiersAPI
@@ -88,6 +92,8 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	// API Services
 	c.AgentsAPI = (*AgentsAPIService)(&c.common)
 	c.BatchAPI = (*BatchAPIService)(&c.common)
+	c.BetaAgentsAPI = (*BetaAgentsAPIService)(&c.common)
+	c.BetaConversationsAPI = (*BetaConversationsAPIService)(&c.common)
 	c.ChatAPI = (*ChatAPIService)(&c.common)
 	c.ClassifiersAPI = (*ClassifiersAPIService)(&c.common)
 	c.EmbeddingsAPI = (*EmbeddingsAPIService)(&c.common)

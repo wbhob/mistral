@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Pages** | [**[]OCRPageObject**](OCRPageObject.md) | List of OCR info for pages. | 
 **Model** | **string** | The model used to generate the OCR. | 
+**DocumentAnnotation** | Pointer to **NullableString** |  | [optional] 
 **UsageInfo** | [**OCRUsageInfo**](OCRUsageInfo.md) | Usage info for the OCR request. | 
 
 ## Methods
@@ -67,6 +68,41 @@ and a boolean to check if the value has been set.
 SetModel sets Model field to given value.
 
 
+### GetDocumentAnnotation
+
+`func (o *OCRResponse) GetDocumentAnnotation() string`
+
+GetDocumentAnnotation returns the DocumentAnnotation field if non-nil, zero value otherwise.
+
+### GetDocumentAnnotationOk
+
+`func (o *OCRResponse) GetDocumentAnnotationOk() (*string, bool)`
+
+GetDocumentAnnotationOk returns a tuple with the DocumentAnnotation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDocumentAnnotation
+
+`func (o *OCRResponse) SetDocumentAnnotation(v string)`
+
+SetDocumentAnnotation sets DocumentAnnotation field to given value.
+
+### HasDocumentAnnotation
+
+`func (o *OCRResponse) HasDocumentAnnotation() bool`
+
+HasDocumentAnnotation returns a boolean if a field has been set.
+
+### SetDocumentAnnotationNil
+
+`func (o *OCRResponse) SetDocumentAnnotationNil(b bool)`
+
+ SetDocumentAnnotationNil sets the value for DocumentAnnotation to be an explicit nil
+
+### UnsetDocumentAnnotation
+`func (o *OCRResponse) UnsetDocumentAnnotation()`
+
+UnsetDocumentAnnotation ensures that no value is present for DocumentAnnotation, not even an explicit nil
 ### GetUsageInfo
 
 `func (o *OCRResponse) GetUsageInfo() OCRUsageInfo`

@@ -20,7 +20,7 @@ var _ MappedNullable = &SystemMessage{}
 
 // SystemMessage struct for SystemMessage
 type SystemMessage struct {
-	Content Content1 `json:"content"`
+	Content Content4 `json:"content"`
 	Role *string `json:"role,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -31,7 +31,7 @@ type _SystemMessage SystemMessage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSystemMessage(content Content1) *SystemMessage {
+func NewSystemMessage(content Content4) *SystemMessage {
 	this := SystemMessage{}
 	this.Content = content
 	var role string = "system"
@@ -50,9 +50,9 @@ func NewSystemMessageWithDefaults() *SystemMessage {
 }
 
 // GetContent returns the Content field value
-func (o *SystemMessage) GetContent() Content1 {
+func (o *SystemMessage) GetContent() Content4 {
 	if o == nil {
-		var ret Content1
+		var ret Content4
 		return ret
 	}
 
@@ -61,7 +61,7 @@ func (o *SystemMessage) GetContent() Content1 {
 
 // GetContentOk returns a tuple with the Content field value
 // and a boolean to check if the value has been set.
-func (o *SystemMessage) GetContentOk() (*Content1, bool) {
+func (o *SystemMessage) GetContentOk() (*Content4, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,7 +69,7 @@ func (o *SystemMessage) GetContentOk() (*Content1, bool) {
 }
 
 // SetContent sets field value
-func (o *SystemMessage) SetContent(v Content1) {
+func (o *SystemMessage) SetContent(v Content4) {
 	o.Content = v
 }
 

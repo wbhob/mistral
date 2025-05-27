@@ -12,6 +12,8 @@ package mistral
 
 import (
 	"encoding/json"
+	"bytes"
+	"fmt"
 )
 
 // checks if the ChatCompletionResponse type satisfies the MappedNullable interface at compile time
@@ -24,15 +26,18 @@ type ChatCompletionResponse struct {
 	Model *string `json:"model,omitempty"`
 	Usage *UsageInfo `json:"usage,omitempty"`
 	Created *int32 `json:"created,omitempty"`
-	Choices []ChatCompletionChoice `json:"choices,omitempty"`
+	Choices []ChatCompletionChoice `json:"choices"`
 }
+
+type _ChatCompletionResponse ChatCompletionResponse
 
 // NewChatCompletionResponse instantiates a new ChatCompletionResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewChatCompletionResponse() *ChatCompletionResponse {
+func NewChatCompletionResponse(choices []ChatCompletionChoice) *ChatCompletionResponse {
 	this := ChatCompletionResponse{}
+	this.Choices = choices
 	return &this
 }
 
@@ -204,34 +209,26 @@ func (o *ChatCompletionResponse) SetCreated(v int32) {
 	o.Created = &v
 }
 
-// GetChoices returns the Choices field value if set, zero value otherwise.
+// GetChoices returns the Choices field value
 func (o *ChatCompletionResponse) GetChoices() []ChatCompletionChoice {
-	if o == nil || IsNil(o.Choices) {
+	if o == nil {
 		var ret []ChatCompletionChoice
 		return ret
 	}
+
 	return o.Choices
 }
 
-// GetChoicesOk returns a tuple with the Choices field value if set, nil otherwise
+// GetChoicesOk returns a tuple with the Choices field value
 // and a boolean to check if the value has been set.
 func (o *ChatCompletionResponse) GetChoicesOk() ([]ChatCompletionChoice, bool) {
-	if o == nil || IsNil(o.Choices) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Choices, true
 }
 
-// HasChoices returns a boolean if a field has been set.
-func (o *ChatCompletionResponse) HasChoices() bool {
-	if o != nil && !IsNil(o.Choices) {
-		return true
-	}
-
-	return false
-}
-
-// SetChoices gets a reference to the given []ChatCompletionChoice and assigns it to the Choices field.
+// SetChoices sets field value
 func (o *ChatCompletionResponse) SetChoices(v []ChatCompletionChoice) {
 	o.Choices = v
 }
@@ -261,10 +258,45 @@ func (o ChatCompletionResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Created) {
 		toSerialize["created"] = o.Created
 	}
-	if !IsNil(o.Choices) {
-		toSerialize["choices"] = o.Choices
-	}
+	toSerialize["choices"] = o.Choices
 	return toSerialize, nil
+}
+
+func (o *ChatCompletionResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"choices",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err;
+	}
+
+	for _, requiredProperty := range(requiredProperties) {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varChatCompletionResponse := _ChatCompletionResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varChatCompletionResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ChatCompletionResponse(varChatCompletionResponse)
+
+	return err
 }
 
 type NullableChatCompletionResponse struct {

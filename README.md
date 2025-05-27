@@ -83,6 +83,21 @@ Class | Method | HTTP request | Description
 *BatchAPI* | [**JobsApiRoutesBatchCreateBatchJob**](docs/BatchAPI.md#jobsapiroutesbatchcreatebatchjob) | **Post** /v1/batch/jobs | Create Batch Job
 *BatchAPI* | [**JobsApiRoutesBatchGetBatchJob**](docs/BatchAPI.md#jobsapiroutesbatchgetbatchjob) | **Get** /v1/batch/jobs/{job_id} | Get Batch Job
 *BatchAPI* | [**JobsApiRoutesBatchGetBatchJobs**](docs/BatchAPI.md#jobsapiroutesbatchgetbatchjobs) | **Get** /v1/batch/jobs | Get Batch Jobs
+*BetaAgentsAPI* | [**AgentsApiV1AgentsCreate**](docs/BetaAgentsAPI.md#agentsapiv1agentscreate) | **Post** /v1/agents | Create a agent that can be used within a conversation.
+*BetaAgentsAPI* | [**AgentsApiV1AgentsGet**](docs/BetaAgentsAPI.md#agentsapiv1agentsget) | **Get** /v1/agents/{agent_id} | Retrieve an agent entity.
+*BetaAgentsAPI* | [**AgentsApiV1AgentsList**](docs/BetaAgentsAPI.md#agentsapiv1agentslist) | **Get** /v1/agents | List agent entities.
+*BetaAgentsAPI* | [**AgentsApiV1AgentsUpdate**](docs/BetaAgentsAPI.md#agentsapiv1agentsupdate) | **Patch** /v1/agents/{agent_id} | Update an agent entity.
+*BetaAgentsAPI* | [**AgentsApiV1AgentsUpdateVersion**](docs/BetaAgentsAPI.md#agentsapiv1agentsupdateversion) | **Patch** /v1/agents/{agent_id}/version | Update an agent version.
+*BetaConversationsAPI* | [**AgentsApiV1ConversationsAppend**](docs/BetaConversationsAPI.md#agentsapiv1conversationsappend) | **Post** /v1/conversations/{conversation_id} | Append new entries to an existing conversation.
+*BetaConversationsAPI* | [**AgentsApiV1ConversationsAppendStream**](docs/BetaConversationsAPI.md#agentsapiv1conversationsappendstream) | **Post** /v1/conversations/{conversation_id}#stream | Append new entries to an existing conversation.
+*BetaConversationsAPI* | [**AgentsApiV1ConversationsGet**](docs/BetaConversationsAPI.md#agentsapiv1conversationsget) | **Get** /v1/conversations/{conversation_id} | Retrieve a conversation information.
+*BetaConversationsAPI* | [**AgentsApiV1ConversationsHistory**](docs/BetaConversationsAPI.md#agentsapiv1conversationshistory) | **Get** /v1/conversations/{conversation_id}/history | Retrieve all entries in a conversation.
+*BetaConversationsAPI* | [**AgentsApiV1ConversationsList**](docs/BetaConversationsAPI.md#agentsapiv1conversationslist) | **Get** /v1/conversations | List all created conversations.
+*BetaConversationsAPI* | [**AgentsApiV1ConversationsMessages**](docs/BetaConversationsAPI.md#agentsapiv1conversationsmessages) | **Get** /v1/conversations/{conversation_id}/messages | Retrieve all messages in a conversation.
+*BetaConversationsAPI* | [**AgentsApiV1ConversationsRestart**](docs/BetaConversationsAPI.md#agentsapiv1conversationsrestart) | **Post** /v1/conversations/{conversation_id}/restart | Restart a conversation starting from a given entry.
+*BetaConversationsAPI* | [**AgentsApiV1ConversationsRestartStream**](docs/BetaConversationsAPI.md#agentsapiv1conversationsrestartstream) | **Post** /v1/conversations/{conversation_id}/restart#stream | Restart a conversation starting from a given entry.
+*BetaConversationsAPI* | [**AgentsApiV1ConversationsStart**](docs/BetaConversationsAPI.md#agentsapiv1conversationsstart) | **Post** /v1/conversations | Create a conversation and append entries to it.
+*BetaConversationsAPI* | [**AgentsApiV1ConversationsStartStream**](docs/BetaConversationsAPI.md#agentsapiv1conversationsstartstream) | **Post** /v1/conversations#stream | Create a conversation and append entries to it.
 *ChatAPI* | [**ChatCompletionV1ChatCompletionsPost**](docs/ChatAPI.md#chatcompletionv1chatcompletionspost) | **Post** /v1/chat/completions | Chat Completion
 *ClassifiersAPI* | [**ChatClassificationsV1ChatClassificationsPost**](docs/ClassifiersAPI.md#chatclassificationsv1chatclassificationspost) | **Post** /v1/chat/classifications | Chat Classifications
 *ClassifiersAPI* | [**ChatModerationsV1ChatModerationsPost**](docs/ClassifiersAPI.md#chatmoderationsv1chatmoderationspost) | **Post** /v1/chat/moderations | Chat Moderations
@@ -112,6 +127,15 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [Agent](docs/Agent.md)
+ - [AgentConversation](docs/AgentConversation.md)
+ - [AgentCreationRequest](docs/AgentCreationRequest.md)
+ - [AgentHandoffDoneEvent](docs/AgentHandoffDoneEvent.md)
+ - [AgentHandoffEntry](docs/AgentHandoffEntry.md)
+ - [AgentHandoffStartedEvent](docs/AgentHandoffStartedEvent.md)
+ - [AgentToolsInner](docs/AgentToolsInner.md)
+ - [AgentUpdateRequest](docs/AgentUpdateRequest.md)
+ - [AgentsApiV1ConversationsList200ResponseInner](docs/AgentsApiV1ConversationsList200ResponseInner.md)
  - [AgentsCompletionRequest](docs/AgentsCompletionRequest.md)
  - [ApiEndpoint](docs/ApiEndpoint.md)
  - [ArchiveFTModelOut](docs/ArchiveFTModelOut.md)
@@ -123,6 +147,7 @@ Class | Method | HTTP request | Description
  - [BatchJobOut](docs/BatchJobOut.md)
  - [BatchJobStatus](docs/BatchJobStatus.md)
  - [BatchJobsOut](docs/BatchJobsOut.md)
+ - [BuiltInConnectors](docs/BuiltInConnectors.md)
  - [ChatClassificationRequest](docs/ChatClassificationRequest.md)
  - [ChatClassificationRequestInputs](docs/ChatClassificationRequestInputs.md)
  - [ChatCompletionChoice](docs/ChatCompletionChoice.md)
@@ -142,6 +167,9 @@ Class | Method | HTTP request | Description
  - [ClassifierTargetOut](docs/ClassifierTargetOut.md)
  - [ClassifierTrainingParameters](docs/ClassifierTrainingParameters.md)
  - [ClassifierTrainingParametersIn](docs/ClassifierTrainingParametersIn.md)
+ - [CodeInterpreterTool](docs/CodeInterpreterTool.md)
+ - [CompletionArgs](docs/CompletionArgs.md)
+ - [CompletionArgsStop](docs/CompletionArgsStop.md)
  - [CompletionChunk](docs/CompletionChunk.md)
  - [CompletionDetailedJobOut](docs/CompletionDetailedJobOut.md)
  - [CompletionEvent](docs/CompletionEvent.md)
@@ -151,15 +179,39 @@ Class | Method | HTTP request | Description
  - [CompletionResponseStreamChoice](docs/CompletionResponseStreamChoice.md)
  - [CompletionTrainingParameters](docs/CompletionTrainingParameters.md)
  - [CompletionTrainingParametersIn](docs/CompletionTrainingParametersIn.md)
+ - [ConnectorTokens](docs/ConnectorTokens.md)
+ - [Connectors](docs/Connectors.md)
  - [Content](docs/Content.md)
  - [Content1](docs/Content1.md)
+ - [Content2](docs/Content2.md)
+ - [Content3](docs/Content3.md)
+ - [Content4](docs/Content4.md)
  - [ContentChunk](docs/ContentChunk.md)
+ - [ConversationAppendRequest](docs/ConversationAppendRequest.md)
+ - [ConversationAppendRequestBase](docs/ConversationAppendRequestBase.md)
+ - [ConversationAppendStreamRequest](docs/ConversationAppendStreamRequest.md)
+ - [ConversationEvents](docs/ConversationEvents.md)
+ - [ConversationHistory](docs/ConversationHistory.md)
+ - [ConversationHistoryEntriesInner](docs/ConversationHistoryEntriesInner.md)
+ - [ConversationInputs](docs/ConversationInputs.md)
+ - [ConversationMessages](docs/ConversationMessages.md)
+ - [ConversationRequest](docs/ConversationRequest.md)
+ - [ConversationRequestBase](docs/ConversationRequestBase.md)
+ - [ConversationResponse](docs/ConversationResponse.md)
+ - [ConversationResponseOutputsInner](docs/ConversationResponseOutputsInner.md)
+ - [ConversationRestartRequest](docs/ConversationRestartRequest.md)
+ - [ConversationRestartRequestBase](docs/ConversationRestartRequestBase.md)
+ - [ConversationRestartStreamRequest](docs/ConversationRestartStreamRequest.md)
+ - [ConversationStreamRequest](docs/ConversationStreamRequest.md)
+ - [ConversationUsageInfo](docs/ConversationUsageInfo.md)
+ - [Data](docs/Data.md)
  - [DeleteFileOut](docs/DeleteFileOut.md)
  - [DeleteModelOut](docs/DeleteModelOut.md)
  - [DeltaMessage](docs/DeltaMessage.md)
  - [DeltaMessageContent](docs/DeltaMessageContent.md)
  - [Description](docs/Description.md)
  - [Document](docs/Document.md)
+ - [DocumentLibraryTool](docs/DocumentLibraryTool.md)
  - [DocumentURLChunk](docs/DocumentURLChunk.md)
  - [EmbeddingRequest](docs/EmbeddingRequest.md)
  - [EmbeddingResponse](docs/EmbeddingResponse.md)
@@ -177,17 +229,24 @@ Class | Method | HTTP request | Description
  - [FineTuneableModelType](docs/FineTuneableModelType.md)
  - [Function](docs/Function.md)
  - [FunctionCall](docs/FunctionCall.md)
+ - [FunctionCallEntry](docs/FunctionCallEntry.md)
+ - [FunctionCallEntryArguments](docs/FunctionCallEntryArguments.md)
+ - [FunctionCallEvent](docs/FunctionCallEvent.md)
  - [FunctionName](docs/FunctionName.md)
+ - [FunctionResultEntry](docs/FunctionResultEntry.md)
+ - [FunctionTool](docs/FunctionTool.md)
  - [GithubRepositoryIn](docs/GithubRepositoryIn.md)
  - [GithubRepositoryOut](docs/GithubRepositoryOut.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
  - [Hyperparameters](docs/Hyperparameters.md)
+ - [ImageGenerationTool](docs/ImageGenerationTool.md)
  - [ImageURL](docs/ImageURL.md)
  - [ImageURLChunk](docs/ImageURLChunk.md)
  - [ImageUrl](docs/ImageUrl.md)
  - [Input](docs/Input.md)
  - [Input1](docs/Input1.md)
  - [Input2](docs/Input2.md)
+ - [InputEntriesInner](docs/InputEntriesInner.md)
  - [InstructRequest](docs/InstructRequest.md)
  - [JobIn](docs/JobIn.md)
  - [JobInIntegrationsInner](docs/JobInIntegrationsInner.md)
@@ -198,9 +257,16 @@ Class | Method | HTTP request | Description
  - [LegacyJobMetadataOut](docs/LegacyJobMetadataOut.md)
  - [ListFilesOut](docs/ListFilesOut.md)
  - [MaxTokens](docs/MaxTokens.md)
+ - [MessageEntriesInner](docs/MessageEntriesInner.md)
+ - [MessageInputContentChunksInner](docs/MessageInputContentChunksInner.md)
+ - [MessageInputEntry](docs/MessageInputEntry.md)
+ - [MessageOutputContentChunksInner](docs/MessageOutputContentChunksInner.md)
+ - [MessageOutputEntry](docs/MessageOutputEntry.md)
+ - [MessageOutputEvent](docs/MessageOutputEvent.md)
  - [MessagesInner](docs/MessagesInner.md)
  - [MetricOut](docs/MetricOut.md)
  - [ModelCapabilities](docs/ModelCapabilities.md)
+ - [ModelConversation](docs/ModelConversation.md)
  - [ModelList](docs/ModelList.md)
  - [ModelListDataInner](docs/ModelListDataInner.md)
  - [ModerationObject](docs/ModerationObject.md)
@@ -212,6 +278,7 @@ Class | Method | HTTP request | Description
  - [OCRRequest](docs/OCRRequest.md)
  - [OCRResponse](docs/OCRResponse.md)
  - [OCRUsageInfo](docs/OCRUsageInfo.md)
+ - [OutputContentChunks](docs/OutputContentChunks.md)
  - [Prediction](docs/Prediction.md)
  - [RandomSeed](docs/RandomSeed.md)
  - [ReferenceChunk](docs/ReferenceChunk.md)
@@ -220,10 +287,15 @@ Class | Method | HTTP request | Description
  - [Response2](docs/Response2.md)
  - [ResponseAnyOf](docs/ResponseAnyOf.md)
  - [ResponseBase](docs/ResponseBase.md)
+ - [ResponseDoneEvent](docs/ResponseDoneEvent.md)
+ - [ResponseErrorEvent](docs/ResponseErrorEvent.md)
  - [ResponseFormat](docs/ResponseFormat.md)
  - [ResponseFormats](docs/ResponseFormats.md)
  - [ResponseRetrieveModelV1ModelsModelIdGet](docs/ResponseRetrieveModelV1ModelsModelIdGet.md)
+ - [ResponseStartedEvent](docs/ResponseStartedEvent.md)
+ - [ResponseV1ConversationsGet](docs/ResponseV1ConversationsGet.md)
  - [RetrieveFileOut](docs/RetrieveFileOut.md)
+ - [SSETypes](docs/SSETypes.md)
  - [SampleType](docs/SampleType.md)
  - [Source](docs/Source.md)
  - [Stop](docs/Stop.md)
@@ -235,7 +307,12 @@ Class | Method | HTTP request | Description
  - [ToolCall](docs/ToolCall.md)
  - [ToolChoice](docs/ToolChoice.md)
  - [ToolChoiceEnum](docs/ToolChoiceEnum.md)
+ - [ToolExecutionDoneEvent](docs/ToolExecutionDoneEvent.md)
+ - [ToolExecutionEntry](docs/ToolExecutionEntry.md)
+ - [ToolExecutionStartedEvent](docs/ToolExecutionStartedEvent.md)
+ - [ToolFileChunk](docs/ToolFileChunk.md)
  - [ToolMessage](docs/ToolMessage.md)
+ - [ToolReferenceChunk](docs/ToolReferenceChunk.md)
  - [ToolTypes](docs/ToolTypes.md)
  - [Tools](docs/Tools.md)
  - [TrainingFile](docs/TrainingFile.md)
@@ -248,6 +325,8 @@ Class | Method | HTTP request | Description
  - [ValidationErrorLocInner](docs/ValidationErrorLocInner.md)
  - [WandbIntegration](docs/WandbIntegration.md)
  - [WandbIntegrationOut](docs/WandbIntegrationOut.md)
+ - [WebSearchPremiumTool](docs/WebSearchPremiumTool.md)
+ - [WebSearchTool](docs/WebSearchTool.md)
 
 
 ## Documentation For Authorization

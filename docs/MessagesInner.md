@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Content** | [**NullableContent**](Content.md) |  | 
+**Content** | [**NullableContent3**](Content3.md) |  | 
 **Role** | Pointer to **string** |  | [optional] [default to "tool"]
 **ToolCalls** | Pointer to [**[]ToolCall**](ToolCall.md) |  | [optional] 
 **Prefix** | Pointer to **bool** | Set this to &#x60;true&#x60; when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message. | [optional] [default to false]
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewMessagesInner
 
-`func NewMessagesInner(content NullableContent, ) *MessagesInner`
+`func NewMessagesInner(content NullableContent3, ) *MessagesInner`
 
 NewMessagesInner instantiates a new MessagesInner object
 This constructor will assign default values to properties that have it defined,
@@ -32,20 +32,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetContent
 
-`func (o *MessagesInner) GetContent() Content`
+`func (o *MessagesInner) GetContent() Content3`
 
 GetContent returns the Content field if non-nil, zero value otherwise.
 
 ### GetContentOk
 
-`func (o *MessagesInner) GetContentOk() (*Content, bool)`
+`func (o *MessagesInner) GetContentOk() (*Content3, bool)`
 
 GetContentOk returns a tuple with the Content field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContent
 
-`func (o *MessagesInner) SetContent(v Content)`
+`func (o *MessagesInner) SetContent(v Content3)`
 
 SetContent sets Content field to given value.
 

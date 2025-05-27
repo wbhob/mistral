@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Content** | [**NullableContent**](Content.md) |  | 
+**Content** | [**NullableContent3**](Content3.md) |  | 
 **Role** | Pointer to **string** |  | [optional] [default to "user"]
 
 ## Methods
 
 ### NewUserMessage
 
-`func NewUserMessage(content NullableContent, ) *UserMessage`
+`func NewUserMessage(content NullableContent3, ) *UserMessage`
 
 NewUserMessage instantiates a new UserMessage object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetContent
 
-`func (o *UserMessage) GetContent() Content`
+`func (o *UserMessage) GetContent() Content3`
 
 GetContent returns the Content field if non-nil, zero value otherwise.
 
 ### GetContentOk
 
-`func (o *UserMessage) GetContentOk() (*Content, bool)`
+`func (o *UserMessage) GetContentOk() (*Content3, bool)`
 
 GetContentOk returns a tuple with the Content field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContent
 
-`func (o *UserMessage) SetContent(v Content)`
+`func (o *UserMessage) SetContent(v Content3)`
 
 SetContent sets Content field to given value.
 

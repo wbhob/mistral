@@ -24,6 +24,7 @@ type OCRResponse struct {
 	Pages []OCRPageObject `json:"pages"`
 	// The model used to generate the OCR.
 	Model string `json:"model"`
+	DocumentAnnotation NullableString `json:"document_annotation,omitempty"`
 	// Usage info for the OCR request.
 	UsageInfo OCRUsageInfo `json:"usage_info"`
 	AdditionalProperties map[string]interface{}
@@ -99,6 +100,48 @@ func (o *OCRResponse) SetModel(v string) {
 	o.Model = v
 }
 
+// GetDocumentAnnotation returns the DocumentAnnotation field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OCRResponse) GetDocumentAnnotation() string {
+	if o == nil || IsNil(o.DocumentAnnotation.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DocumentAnnotation.Get()
+}
+
+// GetDocumentAnnotationOk returns a tuple with the DocumentAnnotation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OCRResponse) GetDocumentAnnotationOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DocumentAnnotation.Get(), o.DocumentAnnotation.IsSet()
+}
+
+// HasDocumentAnnotation returns a boolean if a field has been set.
+func (o *OCRResponse) HasDocumentAnnotation() bool {
+	if o != nil && o.DocumentAnnotation.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDocumentAnnotation gets a reference to the given NullableString and assigns it to the DocumentAnnotation field.
+func (o *OCRResponse) SetDocumentAnnotation(v string) {
+	o.DocumentAnnotation.Set(&v)
+}
+// SetDocumentAnnotationNil sets the value for DocumentAnnotation to be an explicit nil
+func (o *OCRResponse) SetDocumentAnnotationNil() {
+	o.DocumentAnnotation.Set(nil)
+}
+
+// UnsetDocumentAnnotation ensures that no value is present for DocumentAnnotation, not even an explicit nil
+func (o *OCRResponse) UnsetDocumentAnnotation() {
+	o.DocumentAnnotation.Unset()
+}
+
 // GetUsageInfo returns the UsageInfo field value
 func (o *OCRResponse) GetUsageInfo() OCRUsageInfo {
 	if o == nil {
@@ -135,6 +178,9 @@ func (o OCRResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["pages"] = o.Pages
 	toSerialize["model"] = o.Model
+	if o.DocumentAnnotation.IsSet() {
+		toSerialize["document_annotation"] = o.DocumentAnnotation.Get()
+	}
 	toSerialize["usage_info"] = o.UsageInfo
 
 	for key, value := range o.AdditionalProperties {
@@ -183,6 +229,7 @@ func (o *OCRResponse) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "pages")
 		delete(additionalProperties, "model")
+		delete(additionalProperties, "document_annotation")
 		delete(additionalProperties, "usage_info")
 		o.AdditionalProperties = additionalProperties
 	}

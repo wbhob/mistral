@@ -21,7 +21,7 @@ var _ MappedNullable = &JsonSchema{}
 // JsonSchema struct for JsonSchema
 type JsonSchema struct {
 	Name string `json:"name"`
-	Description *Description `json:"description,omitempty"`
+	Description NullableDescription `json:"description,omitempty"`
 	Schema map[string]interface{} `json:"schema"`
 	Strict *bool `json:"strict,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -76,36 +76,46 @@ func (o *JsonSchema) SetName(v string) {
 	o.Name = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JsonSchema) GetDescription() Description {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret Description
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *JsonSchema) GetDescriptionOk() (*Description, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *JsonSchema) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given Description and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableDescription and assigns it to the Description field.
 func (o *JsonSchema) SetDescription(v Description) {
-	o.Description = &v
+	o.Description.Set(&v)
+}
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *JsonSchema) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *JsonSchema) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetSchema returns the Schema field value
@@ -175,8 +185,8 @@ func (o JsonSchema) MarshalJSON() ([]byte, error) {
 func (o JsonSchema) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 	toSerialize["schema"] = o.Schema
 	if !IsNil(o.Strict) {

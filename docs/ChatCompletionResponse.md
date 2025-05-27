@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **Model** | Pointer to **string** |  | [optional] 
 **Usage** | Pointer to [**UsageInfo**](UsageInfo.md) |  | [optional] 
 **Created** | Pointer to **int32** |  | [optional] 
-**Choices** | Pointer to [**[]ChatCompletionChoice**](ChatCompletionChoice.md) |  | [optional] 
+**Choices** | [**[]ChatCompletionChoice**](ChatCompletionChoice.md) |  | 
 
 ## Methods
 
 ### NewChatCompletionResponse
 
-`func NewChatCompletionResponse() *ChatCompletionResponse`
+`func NewChatCompletionResponse(choices []ChatCompletionChoice, ) *ChatCompletionResponse`
 
 NewChatCompletionResponse instantiates a new ChatCompletionResponse object
 This constructor will assign default values to properties that have it defined,
@@ -174,11 +174,6 @@ and a boolean to check if the value has been set.
 
 SetChoices sets Choices field to given value.
 
-### HasChoices
-
-`func (o *ChatCompletionResponse) HasChoices() bool`
-
-HasChoices returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

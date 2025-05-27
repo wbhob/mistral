@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **IncludeImageBase64** | Pointer to **NullableBool** |  | [optional] 
 **ImageLimit** | Pointer to **NullableInt32** |  | [optional] 
 **ImageMinSize** | Pointer to **NullableInt32** |  | [optional] 
+**BboxAnnotationFormat** | Pointer to [**NullableResponseFormat**](ResponseFormat.md) |  | [optional] 
+**DocumentAnnotationFormat** | Pointer to [**NullableResponseFormat**](ResponseFormat.md) |  | [optional] 
 
 ## Methods
 
@@ -246,6 +248,76 @@ HasImageMinSize returns a boolean if a field has been set.
 `func (o *OCRRequest) UnsetImageMinSize()`
 
 UnsetImageMinSize ensures that no value is present for ImageMinSize, not even an explicit nil
+### GetBboxAnnotationFormat
+
+`func (o *OCRRequest) GetBboxAnnotationFormat() ResponseFormat`
+
+GetBboxAnnotationFormat returns the BboxAnnotationFormat field if non-nil, zero value otherwise.
+
+### GetBboxAnnotationFormatOk
+
+`func (o *OCRRequest) GetBboxAnnotationFormatOk() (*ResponseFormat, bool)`
+
+GetBboxAnnotationFormatOk returns a tuple with the BboxAnnotationFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBboxAnnotationFormat
+
+`func (o *OCRRequest) SetBboxAnnotationFormat(v ResponseFormat)`
+
+SetBboxAnnotationFormat sets BboxAnnotationFormat field to given value.
+
+### HasBboxAnnotationFormat
+
+`func (o *OCRRequest) HasBboxAnnotationFormat() bool`
+
+HasBboxAnnotationFormat returns a boolean if a field has been set.
+
+### SetBboxAnnotationFormatNil
+
+`func (o *OCRRequest) SetBboxAnnotationFormatNil(b bool)`
+
+ SetBboxAnnotationFormatNil sets the value for BboxAnnotationFormat to be an explicit nil
+
+### UnsetBboxAnnotationFormat
+`func (o *OCRRequest) UnsetBboxAnnotationFormat()`
+
+UnsetBboxAnnotationFormat ensures that no value is present for BboxAnnotationFormat, not even an explicit nil
+### GetDocumentAnnotationFormat
+
+`func (o *OCRRequest) GetDocumentAnnotationFormat() ResponseFormat`
+
+GetDocumentAnnotationFormat returns the DocumentAnnotationFormat field if non-nil, zero value otherwise.
+
+### GetDocumentAnnotationFormatOk
+
+`func (o *OCRRequest) GetDocumentAnnotationFormatOk() (*ResponseFormat, bool)`
+
+GetDocumentAnnotationFormatOk returns a tuple with the DocumentAnnotationFormat field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDocumentAnnotationFormat
+
+`func (o *OCRRequest) SetDocumentAnnotationFormat(v ResponseFormat)`
+
+SetDocumentAnnotationFormat sets DocumentAnnotationFormat field to given value.
+
+### HasDocumentAnnotationFormat
+
+`func (o *OCRRequest) HasDocumentAnnotationFormat() bool`
+
+HasDocumentAnnotationFormat returns a boolean if a field has been set.
+
+### SetDocumentAnnotationFormatNil
+
+`func (o *OCRRequest) SetDocumentAnnotationFormatNil(b bool)`
+
+ SetDocumentAnnotationFormatNil sets the value for DocumentAnnotationFormat to be an explicit nil
+
+### UnsetDocumentAnnotationFormat
+`func (o *OCRRequest) UnsetDocumentAnnotationFormat()`
+
+UnsetDocumentAnnotationFormat ensures that no value is present for DocumentAnnotationFormat, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Description** | Pointer to [**Description**](Description.md) |  | [optional] 
+**Description** | Pointer to [**NullableDescription**](Description.md) |  | [optional] 
 **Schema** | **map[string]interface{}** |  | 
 **Strict** | Pointer to **bool** |  | [optional] [default to false]
 
@@ -73,6 +73,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *JsonSchema) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *JsonSchema) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetSchema
 
 `func (o *JsonSchema) GetSchema() map[string]interface{}`

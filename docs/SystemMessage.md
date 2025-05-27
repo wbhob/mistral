@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Content** | [**Content1**](Content1.md) |  | 
+**Content** | [**Content4**](Content4.md) |  | 
 **Role** | Pointer to **string** |  | [optional] [default to "system"]
 
 ## Methods
 
 ### NewSystemMessage
 
-`func NewSystemMessage(content Content1, ) *SystemMessage`
+`func NewSystemMessage(content Content4, ) *SystemMessage`
 
 NewSystemMessage instantiates a new SystemMessage object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetContent
 
-`func (o *SystemMessage) GetContent() Content1`
+`func (o *SystemMessage) GetContent() Content4`
 
 GetContent returns the Content field if non-nil, zero value otherwise.
 
 ### GetContentOk
 
-`func (o *SystemMessage) GetContentOk() (*Content1, bool)`
+`func (o *SystemMessage) GetContentOk() (*Content4, bool)`
 
 GetContentOk returns a tuple with the Content field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContent
 
-`func (o *SystemMessage) SetContent(v Content1)`
+`func (o *SystemMessage) SetContent(v Content4)`
 
 SetContent sets Content field to given value.
 

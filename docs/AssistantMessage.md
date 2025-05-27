@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Content** | Pointer to [**NullableContent**](Content.md) |  | [optional] 
+**Content** | Pointer to [**NullableContent3**](Content3.md) |  | [optional] 
 **ToolCalls** | Pointer to [**[]ToolCall**](ToolCall.md) |  | [optional] 
 **Prefix** | Pointer to **bool** | Set this to &#x60;true&#x60; when adding an assistant message as prefix to condition the model response. The role of the prefix message is to force the model to start its answer by the content of the message. | [optional] [default to false]
 **Role** | Pointer to **string** |  | [optional] [default to "assistant"]
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetContent
 
-`func (o *AssistantMessage) GetContent() Content`
+`func (o *AssistantMessage) GetContent() Content3`
 
 GetContent returns the Content field if non-nil, zero value otherwise.
 
 ### GetContentOk
 
-`func (o *AssistantMessage) GetContentOk() (*Content, bool)`
+`func (o *AssistantMessage) GetContentOk() (*Content3, bool)`
 
 GetContentOk returns a tuple with the Content field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContent
 
-`func (o *AssistantMessage) SetContent(v Content)`
+`func (o *AssistantMessage) SetContent(v Content3)`
 
 SetContent sets Content field to given value.
 

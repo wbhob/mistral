@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Content** | [**NullableContent**](Content.md) |  | 
+**Content** | [**NullableContent3**](Content3.md) |  | 
 **ToolCallId** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **NullableString** |  | [optional] 
 **Role** | Pointer to **string** |  | [optional] [default to "tool"]
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewToolMessage
 
-`func NewToolMessage(content NullableContent, ) *ToolMessage`
+`func NewToolMessage(content NullableContent3, ) *ToolMessage`
 
 NewToolMessage instantiates a new ToolMessage object
 This constructor will assign default values to properties that have it defined,
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetContent
 
-`func (o *ToolMessage) GetContent() Content`
+`func (o *ToolMessage) GetContent() Content3`
 
 GetContent returns the Content field if non-nil, zero value otherwise.
 
 ### GetContentOk
 
-`func (o *ToolMessage) GetContentOk() (*Content, bool)`
+`func (o *ToolMessage) GetContentOk() (*Content3, bool)`
 
 GetContentOk returns a tuple with the Content field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContent
 
-`func (o *ToolMessage) SetContent(v Content)`
+`func (o *ToolMessage) SetContent(v Content3)`
 
 SetContent sets Content field to given value.
 
