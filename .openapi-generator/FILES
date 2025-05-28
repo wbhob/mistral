@@ -431,6 +431,4 @@ model_wandb_integration_out.go
 model_web_search_premium_tool.go
 model_web_search_tool.go
 response.go
-test/api_beta_agents_test.go
-test/api_beta_conversations_test.go
 utils.go
