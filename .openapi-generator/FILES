@@ -107,6 +107,7 @@ docs/Description.md
 docs/Document.md
 docs/DocumentLibraryTool.md
 docs/DocumentURLChunk.md
+docs/EmbeddingDtype.md
 docs/EmbeddingRequest.md
 docs/EmbeddingResponse.md
 docs/EmbeddingResponseData.md
@@ -316,6 +317,7 @@ model_description.go
 model_document.go
 model_document_library_tool.go
 model_document_url_chunk.go
+model_embedding_dtype.go
 model_embedding_request.go
 model_embedding_response.go
 model_embedding_response_data.go

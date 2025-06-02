@@ -23,6 +23,9 @@ type EmbeddingRequest struct {
 	// ID of the model to use.
 	Model string `json:"model"`
 	Input Input2 `json:"input"`
+	OutputDimension NullableInt32 `json:"output_dimension,omitempty"`
+	// The data type of the output embeddings.
+	OutputDtype *EmbeddingDtype `json:"output_dtype,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -95,6 +98,80 @@ func (o *EmbeddingRequest) SetInput(v Input2) {
 	o.Input = v
 }
 
+// GetOutputDimension returns the OutputDimension field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EmbeddingRequest) GetOutputDimension() int32 {
+	if o == nil || IsNil(o.OutputDimension.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.OutputDimension.Get()
+}
+
+// GetOutputDimensionOk returns a tuple with the OutputDimension field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EmbeddingRequest) GetOutputDimensionOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OutputDimension.Get(), o.OutputDimension.IsSet()
+}
+
+// HasOutputDimension returns a boolean if a field has been set.
+func (o *EmbeddingRequest) HasOutputDimension() bool {
+	if o != nil && o.OutputDimension.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputDimension gets a reference to the given NullableInt32 and assigns it to the OutputDimension field.
+func (o *EmbeddingRequest) SetOutputDimension(v int32) {
+	o.OutputDimension.Set(&v)
+}
+// SetOutputDimensionNil sets the value for OutputDimension to be an explicit nil
+func (o *EmbeddingRequest) SetOutputDimensionNil() {
+	o.OutputDimension.Set(nil)
+}
+
+// UnsetOutputDimension ensures that no value is present for OutputDimension, not even an explicit nil
+func (o *EmbeddingRequest) UnsetOutputDimension() {
+	o.OutputDimension.Unset()
+}
+
+// GetOutputDtype returns the OutputDtype field value if set, zero value otherwise.
+func (o *EmbeddingRequest) GetOutputDtype() EmbeddingDtype {
+	if o == nil || IsNil(o.OutputDtype) {
+		var ret EmbeddingDtype
+		return ret
+	}
+	return *o.OutputDtype
+}
+
+// GetOutputDtypeOk returns a tuple with the OutputDtype field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EmbeddingRequest) GetOutputDtypeOk() (*EmbeddingDtype, bool) {
+	if o == nil || IsNil(o.OutputDtype) {
+		return nil, false
+	}
+	return o.OutputDtype, true
+}
+
+// HasOutputDtype returns a boolean if a field has been set.
+func (o *EmbeddingRequest) HasOutputDtype() bool {
+	if o != nil && !IsNil(o.OutputDtype) {
+		return true
+	}
+
+	return false
+}
+
+// SetOutputDtype gets a reference to the given EmbeddingDtype and assigns it to the OutputDtype field.
+func (o *EmbeddingRequest) SetOutputDtype(v EmbeddingDtype) {
+	o.OutputDtype = &v
+}
+
 func (o EmbeddingRequest) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -107,6 +184,12 @@ func (o EmbeddingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["model"] = o.Model
 	toSerialize["input"] = o.Input
+	if o.OutputDimension.IsSet() {
+		toSerialize["output_dimension"] = o.OutputDimension.Get()
+	}
+	if !IsNil(o.OutputDtype) {
+		toSerialize["output_dtype"] = o.OutputDtype
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -153,6 +236,8 @@ func (o *EmbeddingRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "model")
 		delete(additionalProperties, "input")
+		delete(additionalProperties, "output_dimension")
+		delete(additionalProperties, "output_dtype")
 		o.AdditionalProperties = additionalProperties
 	}
 

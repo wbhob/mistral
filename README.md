@@ -213,6 +213,7 @@ Class | Method | HTTP request | Description
  - [Document](docs/Document.md)
  - [DocumentLibraryTool](docs/DocumentLibraryTool.md)
  - [DocumentURLChunk](docs/DocumentURLChunk.md)
+ - [EmbeddingDtype](docs/EmbeddingDtype.md)
  - [EmbeddingRequest](docs/EmbeddingRequest.md)
  - [EmbeddingResponse](docs/EmbeddingResponse.md)
  - [EmbeddingResponseData](docs/EmbeddingResponseData.md)
