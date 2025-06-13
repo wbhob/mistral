@@ -182,7 +182,7 @@ import (
 )
 
 func main() {
-	conversationId := "conversationId_example" // string | 
+	conversationId := "conversationId_example" // string | ID of the conversation from which we are fetching metadata.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -202,7 +202,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**conversationId** | **string** |  | 
+**conversationId** | **string** | ID of the conversation from which we are fetching metadata. | 
 
 ### Other Parameters
 
@@ -252,7 +252,7 @@ import (
 )
 
 func main() {
-	conversationId := "conversationId_example" // string | 
+	conversationId := "conversationId_example" // string | ID of the conversation from which we are fetching entries.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -272,7 +272,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**conversationId** | **string** |  | 
+**conversationId** | **string** | ID of the conversation from which we are fetching entries. | 
 
 ### Other Parameters
 
@@ -390,7 +390,7 @@ import (
 )
 
 func main() {
-	conversationId := "conversationId_example" // string | 
+	conversationId := "conversationId_example" // string | ID of the conversation from which we are fetching messages.
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -410,7 +410,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**conversationId** | **string** |  | 
+**conversationId** | **string** | ID of the conversation from which we are fetching messages. | 
 
 ### Other Parameters
 
@@ -460,7 +460,7 @@ import (
 )
 
 func main() {
-	conversationId := "conversationId_example" // string | 
+	conversationId := "conversationId_example" // string | ID of the original conversation which is being restarted.
 	conversationRestartRequest := *openapiclient.NewConversationRestartRequest(*openapiclient.NewConversationInputs(), "FromEntryId_example") // ConversationRestartRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -481,7 +481,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**conversationId** | **string** |  | 
+**conversationId** | **string** | ID of the original conversation which is being restarted. | 
 
 ### Other Parameters
 
@@ -532,7 +532,7 @@ import (
 )
 
 func main() {
-	conversationId := "conversationId_example" // string | 
+	conversationId := "conversationId_example" // string | ID of the original conversation which is being restarted.
 	conversationRestartStreamRequest := *openapiclient.NewConversationRestartStreamRequest(*openapiclient.NewConversationInputs(), "FromEntryId_example") // ConversationRestartStreamRequest | 
 
 	configuration := openapiclient.NewConfiguration()
@@ -553,7 +553,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**conversationId** | **string** |  | 
+**conversationId** | **string** | ID of the original conversation which is being restarted. | 
 
 ### Other Parameters
 

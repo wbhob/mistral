@@ -43,6 +43,7 @@ type ChatCompletionRequest struct {
 	// Enable users to specify expected results, optimizing response times by leveraging known or predictable content. This approach is especially effective for updating text documents or code files with minimal changes, reducing latency while maintaining high-quality results.
 	Prediction *Prediction `json:"prediction,omitempty"`
 	ParallelToolCalls *bool `json:"parallel_tool_calls,omitempty"`
+	PromptMode *ChatCompletionRequestPromptMode `json:"prompt_mode,omitempty"`
 	// Whether to inject a safety prompt before all conversations.
 	SafePrompt *bool `json:"safe_prompt,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -593,6 +594,38 @@ func (o *ChatCompletionRequest) SetParallelToolCalls(v bool) {
 	o.ParallelToolCalls = &v
 }
 
+// GetPromptMode returns the PromptMode field value if set, zero value otherwise.
+func (o *ChatCompletionRequest) GetPromptMode() ChatCompletionRequestPromptMode {
+	if o == nil || IsNil(o.PromptMode) {
+		var ret ChatCompletionRequestPromptMode
+		return ret
+	}
+	return *o.PromptMode
+}
+
+// GetPromptModeOk returns a tuple with the PromptMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ChatCompletionRequest) GetPromptModeOk() (*ChatCompletionRequestPromptMode, bool) {
+	if o == nil || IsNil(o.PromptMode) {
+		return nil, false
+	}
+	return o.PromptMode, true
+}
+
+// HasPromptMode returns a boolean if a field has been set.
+func (o *ChatCompletionRequest) HasPromptMode() bool {
+	if o != nil && !IsNil(o.PromptMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetPromptMode gets a reference to the given ChatCompletionRequestPromptMode and assigns it to the PromptMode field.
+func (o *ChatCompletionRequest) SetPromptMode(v ChatCompletionRequestPromptMode) {
+	o.PromptMode = &v
+}
+
 // GetSafePrompt returns the SafePrompt field value if set, zero value otherwise.
 func (o *ChatCompletionRequest) GetSafePrompt() bool {
 	if o == nil || IsNil(o.SafePrompt) {
@@ -679,6 +712,9 @@ func (o ChatCompletionRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ParallelToolCalls) {
 		toSerialize["parallel_tool_calls"] = o.ParallelToolCalls
 	}
+	if !IsNil(o.PromptMode) {
+		toSerialize["prompt_mode"] = o.PromptMode
+	}
 	if !IsNil(o.SafePrompt) {
 		toSerialize["safe_prompt"] = o.SafePrompt
 	}
@@ -742,6 +778,7 @@ func (o *ChatCompletionRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "n")
 		delete(additionalProperties, "prediction")
 		delete(additionalProperties, "parallel_tool_calls")
+		delete(additionalProperties, "prompt_mode")
 		delete(additionalProperties, "safe_prompt")
 		o.AdditionalProperties = additionalProperties
 	}

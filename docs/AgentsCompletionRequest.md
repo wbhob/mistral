@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **N** | Pointer to **NullableInt32** |  | [optional] 
 **Prediction** | Pointer to [**Prediction**](Prediction.md) | Enable users to specify expected results, optimizing response times by leveraging known or predictable content. This approach is especially effective for updating text documents or code files with minimal changes, reducing latency while maintaining high-quality results. | [optional] 
 **ParallelToolCalls** | Pointer to **bool** |  | [optional] [default to true]
+**PromptMode** | Pointer to [**NullableMistralPromptMode**](MistralPromptMode.md) |  | [optional] 
 **AgentId** | **string** | The ID of the agent to use for this completion. | 
 
 ## Methods
@@ -398,6 +399,41 @@ SetParallelToolCalls sets ParallelToolCalls field to given value.
 
 HasParallelToolCalls returns a boolean if a field has been set.
 
+### GetPromptMode
+
+`func (o *AgentsCompletionRequest) GetPromptMode() MistralPromptMode`
+
+GetPromptMode returns the PromptMode field if non-nil, zero value otherwise.
+
+### GetPromptModeOk
+
+`func (o *AgentsCompletionRequest) GetPromptModeOk() (*MistralPromptMode, bool)`
+
+GetPromptModeOk returns a tuple with the PromptMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPromptMode
+
+`func (o *AgentsCompletionRequest) SetPromptMode(v MistralPromptMode)`
+
+SetPromptMode sets PromptMode field to given value.
+
+### HasPromptMode
+
+`func (o *AgentsCompletionRequest) HasPromptMode() bool`
+
+HasPromptMode returns a boolean if a field has been set.
+
+### SetPromptModeNil
+
+`func (o *AgentsCompletionRequest) SetPromptModeNil(b bool)`
+
+ SetPromptModeNil sets the value for PromptMode to be an explicit nil
+
+### UnsetPromptMode
+`func (o *AgentsCompletionRequest) UnsetPromptMode()`
+
+UnsetPromptMode ensures that no value is present for PromptMode, not even an explicit nil
 ### GetAgentId
 
 `func (o *AgentsCompletionRequest) GetAgentId() string`

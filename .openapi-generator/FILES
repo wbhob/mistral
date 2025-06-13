@@ -45,6 +45,7 @@ docs/ChatClassificationRequest.md
 docs/ChatClassificationRequestInputs.md
 docs/ChatCompletionChoice.md
 docs/ChatCompletionRequest.md
+docs/ChatCompletionRequestPromptMode.md
 docs/ChatCompletionResponse.md
 docs/ChatCompletionResponseBase.md
 docs/ChatModerationRequest.md
@@ -164,6 +165,7 @@ docs/MessageOutputEntry.md
 docs/MessageOutputEvent.md
 docs/MessagesInner.md
 docs/MetricOut.md
+docs/MistralPromptMode.md
 docs/ModelCapabilities.md
 docs/ModelConversation.md
 docs/ModelList.md
@@ -256,6 +258,7 @@ model_chat_classification_request.go
 model_chat_classification_request_inputs.go
 model_chat_completion_choice.go
 model_chat_completion_request.go
+model_chat_completion_request_prompt_mode.go
 model_chat_completion_response.go
 model_chat_completion_response_base.go
 model_chat_moderation_request.go
@@ -370,6 +373,7 @@ model_message_output_entry.go
 model_message_output_event.go
 model_messages_inner.go
 model_metric_out.go
+model_mistral_prompt_mode.go
 model_model_capabilities.go
 model_model_conversation.go
 model_model_list.go

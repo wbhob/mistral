@@ -38,6 +38,7 @@ type AgentsCompletionRequest struct {
 	// Enable users to specify expected results, optimizing response times by leveraging known or predictable content. This approach is especially effective for updating text documents or code files with minimal changes, reducing latency while maintaining high-quality results.
 	Prediction *Prediction `json:"prediction,omitempty"`
 	ParallelToolCalls *bool `json:"parallel_tool_calls,omitempty"`
+	PromptMode NullableMistralPromptMode `json:"prompt_mode,omitempty"`
 	// The ID of the agent to use for this completion.
 	AgentId string `json:"agent_id"`
 	AdditionalProperties map[string]interface{}
@@ -523,6 +524,48 @@ func (o *AgentsCompletionRequest) SetParallelToolCalls(v bool) {
 	o.ParallelToolCalls = &v
 }
 
+// GetPromptMode returns the PromptMode field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AgentsCompletionRequest) GetPromptMode() MistralPromptMode {
+	if o == nil || IsNil(o.PromptMode.Get()) {
+		var ret MistralPromptMode
+		return ret
+	}
+	return *o.PromptMode.Get()
+}
+
+// GetPromptModeOk returns a tuple with the PromptMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AgentsCompletionRequest) GetPromptModeOk() (*MistralPromptMode, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.PromptMode.Get(), o.PromptMode.IsSet()
+}
+
+// HasPromptMode returns a boolean if a field has been set.
+func (o *AgentsCompletionRequest) HasPromptMode() bool {
+	if o != nil && o.PromptMode.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPromptMode gets a reference to the given NullableMistralPromptMode and assigns it to the PromptMode field.
+func (o *AgentsCompletionRequest) SetPromptMode(v MistralPromptMode) {
+	o.PromptMode.Set(&v)
+}
+// SetPromptModeNil sets the value for PromptMode to be an explicit nil
+func (o *AgentsCompletionRequest) SetPromptModeNil() {
+	o.PromptMode.Set(nil)
+}
+
+// UnsetPromptMode ensures that no value is present for PromptMode, not even an explicit nil
+func (o *AgentsCompletionRequest) UnsetPromptMode() {
+	o.PromptMode.Unset()
+}
+
 // GetAgentId returns the AgentId field value
 func (o *AgentsCompletionRequest) GetAgentId() string {
 	if o == nil {
@@ -594,6 +637,9 @@ func (o AgentsCompletionRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ParallelToolCalls) {
 		toSerialize["parallel_tool_calls"] = o.ParallelToolCalls
 	}
+	if o.PromptMode.IsSet() {
+		toSerialize["prompt_mode"] = o.PromptMode.Get()
+	}
 	toSerialize["agent_id"] = o.AgentId
 
 	for key, value := range o.AdditionalProperties {
@@ -652,6 +698,7 @@ func (o *AgentsCompletionRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "n")
 		delete(additionalProperties, "prediction")
 		delete(additionalProperties, "parallel_tool_calls")
+		delete(additionalProperties, "prompt_mode")
 		delete(additionalProperties, "agent_id")
 		o.AdditionalProperties = additionalProperties
 	}

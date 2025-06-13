@@ -58,7 +58,7 @@ type BetaConversationsAPI interface {
 	Given a conversation_id retrieve a conversation entity with its attributes.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param conversationId
+	@param conversationId ID of the conversation from which we are fetching metadata.
 	@return ApiAgentsApiV1ConversationsGetRequest
 	*/
 	AgentsApiV1ConversationsGet(ctx context.Context, conversationId string) ApiAgentsApiV1ConversationsGetRequest
@@ -73,7 +73,7 @@ type BetaConversationsAPI interface {
 	Given a conversation_id retrieve all the entries belonging to that conversation. The entries are sorted in the order they were appended, those can be messages, connectors or function_call.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param conversationId
+	@param conversationId ID of the conversation from which we are fetching entries.
 	@return ApiAgentsApiV1ConversationsHistoryRequest
 	*/
 	AgentsApiV1ConversationsHistory(ctx context.Context, conversationId string) ApiAgentsApiV1ConversationsHistoryRequest
@@ -102,7 +102,7 @@ type BetaConversationsAPI interface {
 	Given a conversation_id retrieve all the messages belonging to that conversation. This is similar to retrieving all entries except we filter the messages only.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param conversationId
+	@param conversationId ID of the conversation from which we are fetching messages.
 	@return ApiAgentsApiV1ConversationsMessagesRequest
 	*/
 	AgentsApiV1ConversationsMessages(ctx context.Context, conversationId string) ApiAgentsApiV1ConversationsMessagesRequest
@@ -117,7 +117,7 @@ type BetaConversationsAPI interface {
 	Given a conversation_id and an id, recreate a conversation from this point and run completion. A new conversation is returned with the new entries returned.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param conversationId
+	@param conversationId ID of the original conversation which is being restarted.
 	@return ApiAgentsApiV1ConversationsRestartRequest
 	*/
 	AgentsApiV1ConversationsRestart(ctx context.Context, conversationId string) ApiAgentsApiV1ConversationsRestartRequest
@@ -132,7 +132,7 @@ type BetaConversationsAPI interface {
 	Given a conversation_id and an id, recreate a conversation from this point and run completion. A new conversation is returned with the new entries returned.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param conversationId
+	@param conversationId ID of the original conversation which is being restarted.
 	@return ApiAgentsApiV1ConversationsRestartStreamRequest
 	*/
 	AgentsApiV1ConversationsRestartStream(ctx context.Context, conversationId string) ApiAgentsApiV1ConversationsRestartStreamRequest
@@ -437,7 +437,7 @@ AgentsApiV1ConversationsGet Retrieve a conversation information.
 Given a conversation_id retrieve a conversation entity with its attributes.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param conversationId
+ @param conversationId ID of the conversation from which we are fetching metadata.
  @return ApiAgentsApiV1ConversationsGetRequest
 */
 func (a *BetaConversationsAPIService) AgentsApiV1ConversationsGet(ctx context.Context, conversationId string) ApiAgentsApiV1ConversationsGetRequest {
@@ -550,7 +550,7 @@ AgentsApiV1ConversationsHistory Retrieve all entries in a conversation.
 Given a conversation_id retrieve all the entries belonging to that conversation. The entries are sorted in the order they were appended, those can be messages, connectors or function_call.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param conversationId
+ @param conversationId ID of the conversation from which we are fetching entries.
  @return ApiAgentsApiV1ConversationsHistoryRequest
 */
 func (a *BetaConversationsAPIService) AgentsApiV1ConversationsHistory(ctx context.Context, conversationId string) ApiAgentsApiV1ConversationsHistoryRequest {
@@ -796,7 +796,7 @@ AgentsApiV1ConversationsMessages Retrieve all messages in a conversation.
 Given a conversation_id retrieve all the messages belonging to that conversation. This is similar to retrieving all entries except we filter the messages only.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param conversationId
+ @param conversationId ID of the conversation from which we are fetching messages.
  @return ApiAgentsApiV1ConversationsMessagesRequest
 */
 func (a *BetaConversationsAPIService) AgentsApiV1ConversationsMessages(ctx context.Context, conversationId string) ApiAgentsApiV1ConversationsMessagesRequest {
@@ -915,7 +915,7 @@ AgentsApiV1ConversationsRestart Restart a conversation starting from a given ent
 Given a conversation_id and an id, recreate a conversation from this point and run completion. A new conversation is returned with the new entries returned.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param conversationId
+ @param conversationId ID of the original conversation which is being restarted.
  @return ApiAgentsApiV1ConversationsRestartRequest
 */
 func (a *BetaConversationsAPIService) AgentsApiV1ConversationsRestart(ctx context.Context, conversationId string) ApiAgentsApiV1ConversationsRestartRequest {
@@ -1039,7 +1039,7 @@ AgentsApiV1ConversationsRestartStream Restart a conversation starting from a giv
 Given a conversation_id and an id, recreate a conversation from this point and run completion. A new conversation is returned with the new entries returned.
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param conversationId
+ @param conversationId ID of the original conversation which is being restarted.
  @return ApiAgentsApiV1ConversationsRestartStreamRequest
 */
 func (a *BetaConversationsAPIService) AgentsApiV1ConversationsRestartStream(ctx context.Context, conversationId string) ApiAgentsApiV1ConversationsRestartStreamRequest {

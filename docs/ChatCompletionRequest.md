@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **N** | Pointer to [**N**](N.md) |  | [optional] 
 **Prediction** | Pointer to [**Prediction**](Prediction.md) | Enable users to specify expected results, optimizing response times by leveraging known or predictable content. This approach is especially effective for updating text documents or code files with minimal changes, reducing latency while maintaining high-quality results. | [optional] 
 **ParallelToolCalls** | Pointer to **bool** |  | [optional] [default to true]
+**PromptMode** | Pointer to [**ChatCompletionRequestPromptMode**](ChatCompletionRequestPromptMode.md) |  | [optional] 
 **SafePrompt** | Pointer to **bool** | Whether to inject a safety prompt before all conversations. | [optional] [default to false]
 
 ## Methods
@@ -430,6 +431,31 @@ SetParallelToolCalls sets ParallelToolCalls field to given value.
 `func (o *ChatCompletionRequest) HasParallelToolCalls() bool`
 
 HasParallelToolCalls returns a boolean if a field has been set.
+
+### GetPromptMode
+
+`func (o *ChatCompletionRequest) GetPromptMode() ChatCompletionRequestPromptMode`
+
+GetPromptMode returns the PromptMode field if non-nil, zero value otherwise.
+
+### GetPromptModeOk
+
+`func (o *ChatCompletionRequest) GetPromptModeOk() (*ChatCompletionRequestPromptMode, bool)`
+
+GetPromptModeOk returns a tuple with the PromptMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPromptMode
+
+`func (o *ChatCompletionRequest) SetPromptMode(v ChatCompletionRequestPromptMode)`
+
+SetPromptMode sets PromptMode field to given value.
+
+### HasPromptMode
+
+`func (o *ChatCompletionRequest) HasPromptMode() bool`
+
+HasPromptMode returns a boolean if a field has been set.
 
 ### GetSafePrompt
 
