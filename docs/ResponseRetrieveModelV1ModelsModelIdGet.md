@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **MaxContextLength** | Pointer to **int32** |  | [optional] [default to 32768]
 **Aliases** | Pointer to **[]string** |  | [optional] [default to []]
 **Deprecation** | Pointer to **time.Time** |  | [optional] 
+**DeprecationReplacementModel** | Pointer to **string** |  | [optional] 
 **DefaultModelTemperature** | Pointer to **float32** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] [default to "base"]
 **Job** | **string** |  | 
@@ -278,6 +279,31 @@ SetDeprecation sets Deprecation field to given value.
 `func (o *ResponseRetrieveModelV1ModelsModelIdGet) HasDeprecation() bool`
 
 HasDeprecation returns a boolean if a field has been set.
+
+### GetDeprecationReplacementModel
+
+`func (o *ResponseRetrieveModelV1ModelsModelIdGet) GetDeprecationReplacementModel() string`
+
+GetDeprecationReplacementModel returns the DeprecationReplacementModel field if non-nil, zero value otherwise.
+
+### GetDeprecationReplacementModelOk
+
+`func (o *ResponseRetrieveModelV1ModelsModelIdGet) GetDeprecationReplacementModelOk() (*string, bool)`
+
+GetDeprecationReplacementModelOk returns a tuple with the DeprecationReplacementModel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeprecationReplacementModel
+
+`func (o *ResponseRetrieveModelV1ModelsModelIdGet) SetDeprecationReplacementModel(v string)`
+
+SetDeprecationReplacementModel sets DeprecationReplacementModel field to given value.
+
+### HasDeprecationReplacementModel
+
+`func (o *ResponseRetrieveModelV1ModelsModelIdGet) HasDeprecationReplacementModel() bool`
+
+HasDeprecationReplacementModel returns a boolean if a field has been set.
 
 ### GetDefaultModelTemperature
 

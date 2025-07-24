@@ -98,6 +98,24 @@ Class | Method | HTTP request | Description
 *BetaConversationsAPI* | [**AgentsApiV1ConversationsRestartStream**](docs/BetaConversationsAPI.md#agentsapiv1conversationsrestartstream) | **Post** /v1/conversations/{conversation_id}/restart#stream | Restart a conversation starting from a given entry.
 *BetaConversationsAPI* | [**AgentsApiV1ConversationsStart**](docs/BetaConversationsAPI.md#agentsapiv1conversationsstart) | **Post** /v1/conversations | Create a conversation and append entries to it.
 *BetaConversationsAPI* | [**AgentsApiV1ConversationsStartStream**](docs/BetaConversationsAPI.md#agentsapiv1conversationsstartstream) | **Post** /v1/conversations#stream | Create a conversation and append entries to it.
+*BetaLibrariesAPI* | [**LibrariesCreateV1**](docs/BetaLibrariesAPI.md#librariescreatev1) | **Post** /v1/libraries | Create a new Library.
+*BetaLibrariesAPI* | [**LibrariesDeleteV1**](docs/BetaLibrariesAPI.md#librariesdeletev1) | **Delete** /v1/libraries/{library_id} | Delete a library and all of it&#39;s document.
+*BetaLibrariesAPI* | [**LibrariesGetV1**](docs/BetaLibrariesAPI.md#librariesgetv1) | **Get** /v1/libraries/{library_id} | Detailed information about a specific Library.
+*BetaLibrariesAPI* | [**LibrariesListV1**](docs/BetaLibrariesAPI.md#librarieslistv1) | **Get** /v1/libraries | List all libraries you have access to.
+*BetaLibrariesAPI* | [**LibrariesUpdateV1**](docs/BetaLibrariesAPI.md#librariesupdatev1) | **Put** /v1/libraries/{library_id} | Update a library.
+*BetaLibrariesAccessesAPI* | [**LibrariesShareCreateV1**](docs/BetaLibrariesAccessesAPI.md#librariessharecreatev1) | **Put** /v1/libraries/{library_id}/share | Create or update an access level.
+*BetaLibrariesAccessesAPI* | [**LibrariesShareDeleteV1**](docs/BetaLibrariesAccessesAPI.md#librariessharedeletev1) | **Delete** /v1/libraries/{library_id}/share | Delete an access level.
+*BetaLibrariesAccessesAPI* | [**LibrariesShareListV1**](docs/BetaLibrariesAccessesAPI.md#librariessharelistv1) | **Get** /v1/libraries/{library_id}/share | List all of the access to this library.
+*BetaLibrariesDocumentsAPI* | [**LibrariesDocumentsDeleteV1**](docs/BetaLibrariesDocumentsAPI.md#librariesdocumentsdeletev1) | **Delete** /v1/libraries/{library_id}/documents/{document_id} | Delete a document.
+*BetaLibrariesDocumentsAPI* | [**LibrariesDocumentsGetExtractedTextSignedUrlV1**](docs/BetaLibrariesDocumentsAPI.md#librariesdocumentsgetextractedtextsignedurlv1) | **Get** /v1/libraries/{library_id}/documents/{document_id}/extracted-text-signed-url | Retrieve the signed URL of text extracted from a given document.
+*BetaLibrariesDocumentsAPI* | [**LibrariesDocumentsGetSignedUrlV1**](docs/BetaLibrariesDocumentsAPI.md#librariesdocumentsgetsignedurlv1) | **Get** /v1/libraries/{library_id}/documents/{document_id}/signed-url | Retrieve the signed URL of a specific document.
+*BetaLibrariesDocumentsAPI* | [**LibrariesDocumentsGetStatusV1**](docs/BetaLibrariesDocumentsAPI.md#librariesdocumentsgetstatusv1) | **Get** /v1/libraries/{library_id}/documents/{document_id}/status | Retrieve the processing status of a specific document.
+*BetaLibrariesDocumentsAPI* | [**LibrariesDocumentsGetTextContentV1**](docs/BetaLibrariesDocumentsAPI.md#librariesdocumentsgettextcontentv1) | **Get** /v1/libraries/{library_id}/documents/{document_id}/text_content | Retrieve the text content of a specific document.
+*BetaLibrariesDocumentsAPI* | [**LibrariesDocumentsGetV1**](docs/BetaLibrariesDocumentsAPI.md#librariesdocumentsgetv1) | **Get** /v1/libraries/{library_id}/documents/{document_id} | Retrieve the metadata of a specific document.
+*BetaLibrariesDocumentsAPI* | [**LibrariesDocumentsListV1**](docs/BetaLibrariesDocumentsAPI.md#librariesdocumentslistv1) | **Get** /v1/libraries/{library_id}/documents | List document in a given library.
+*BetaLibrariesDocumentsAPI* | [**LibrariesDocumentsReprocessV1**](docs/BetaLibrariesDocumentsAPI.md#librariesdocumentsreprocessv1) | **Post** /v1/libraries/{library_id}/documents/{document_id}/reprocess | Reprocess a document.
+*BetaLibrariesDocumentsAPI* | [**LibrariesDocumentsUpdateV1**](docs/BetaLibrariesDocumentsAPI.md#librariesdocumentsupdatev1) | **Put** /v1/libraries/{library_id}/documents/{document_id} | Update the metadata of a specific document.
+*BetaLibrariesDocumentsAPI* | [**LibrariesDocumentsUploadV1**](docs/BetaLibrariesDocumentsAPI.md#librariesdocumentsuploadv1) | **Post** /v1/libraries/{library_id}/documents | Upload a new document.
 *ChatAPI* | [**ChatCompletionV1ChatCompletionsPost**](docs/ChatAPI.md#chatcompletionv1chatcompletionspost) | **Post** /v1/chat/completions | Chat Completion
 *ClassifiersAPI* | [**ChatClassificationsV1ChatClassificationsPost**](docs/ClassifiersAPI.md#chatclassificationsv1chatclassificationspost) | **Post** /v1/chat/classifications | Chat Classifications
 *ClassifiersAPI* | [**ChatModerationsV1ChatModerationsPost**](docs/ClassifiersAPI.md#chatmoderationsv1chatmoderationspost) | **Post** /v1/chat/moderations | Chat Moderations
@@ -213,17 +231,22 @@ Class | Method | HTTP request | Description
  - [Description](docs/Description.md)
  - [Document](docs/Document.md)
  - [DocumentLibraryTool](docs/DocumentLibraryTool.md)
+ - [DocumentOut](docs/DocumentOut.md)
+ - [DocumentTextContent](docs/DocumentTextContent.md)
  - [DocumentURLChunk](docs/DocumentURLChunk.md)
+ - [DocumentUpdateIn](docs/DocumentUpdateIn.md)
  - [EmbeddingDtype](docs/EmbeddingDtype.md)
  - [EmbeddingRequest](docs/EmbeddingRequest.md)
  - [EmbeddingResponse](docs/EmbeddingResponse.md)
  - [EmbeddingResponseData](docs/EmbeddingResponseData.md)
+ - [EntityType](docs/EntityType.md)
  - [EventOut](docs/EventOut.md)
  - [FIMCompletionRequest](docs/FIMCompletionRequest.md)
  - [FIMCompletionResponse](docs/FIMCompletionResponse.md)
  - [FTClassifierLossFunction](docs/FTClassifierLossFunction.md)
  - [FTModelCapabilitiesOut](docs/FTModelCapabilitiesOut.md)
  - [FTModelCard](docs/FTModelCard.md)
+ - [FileChunk](docs/FileChunk.md)
  - [FilePurpose](docs/FilePurpose.md)
  - [FileSchema](docs/FileSchema.md)
  - [FileSignedURL](docs/FileSignedURL.md)
@@ -248,7 +271,6 @@ Class | Method | HTTP request | Description
  - [Input](docs/Input.md)
  - [Input1](docs/Input1.md)
  - [Input2](docs/Input2.md)
- - [InputEntriesInner](docs/InputEntriesInner.md)
  - [InstructRequest](docs/InstructRequest.md)
  - [JobIn](docs/JobIn.md)
  - [JobInIntegrationsInner](docs/JobInIntegrationsInner.md)
@@ -257,7 +279,13 @@ Class | Method | HTTP request | Description
  - [JobsOut](docs/JobsOut.md)
  - [JsonSchema](docs/JsonSchema.md)
  - [LegacyJobMetadataOut](docs/LegacyJobMetadataOut.md)
+ - [LibraryIn](docs/LibraryIn.md)
+ - [LibraryInUpdate](docs/LibraryInUpdate.md)
+ - [LibraryOut](docs/LibraryOut.md)
+ - [ListDocumentOut](docs/ListDocumentOut.md)
  - [ListFilesOut](docs/ListFilesOut.md)
+ - [ListLibraryOut](docs/ListLibraryOut.md)
+ - [ListSharingOut](docs/ListSharingOut.md)
  - [MaxTokens](docs/MaxTokens.md)
  - [MessageEntriesInner](docs/MessageEntriesInner.md)
  - [MessageInputContentChunksInner](docs/MessageInputContentChunksInner.md)
@@ -282,7 +310,9 @@ Class | Method | HTTP request | Description
  - [OCRResponse](docs/OCRResponse.md)
  - [OCRUsageInfo](docs/OCRUsageInfo.md)
  - [OutputContentChunks](docs/OutputContentChunks.md)
+ - [PaginationInfo](docs/PaginationInfo.md)
  - [Prediction](docs/Prediction.md)
+ - [ProcessingStatusOut](docs/ProcessingStatusOut.md)
  - [RandomSeed](docs/RandomSeed.md)
  - [ReferenceChunk](docs/ReferenceChunk.md)
  - [Response](docs/Response.md)
@@ -300,6 +330,10 @@ Class | Method | HTTP request | Description
  - [RetrieveFileOut](docs/RetrieveFileOut.md)
  - [SSETypes](docs/SSETypes.md)
  - [SampleType](docs/SampleType.md)
+ - [ShareEnum](docs/ShareEnum.md)
+ - [SharingDelete](docs/SharingDelete.md)
+ - [SharingIn](docs/SharingIn.md)
+ - [SharingOut](docs/SharingOut.md)
  - [Source](docs/Source.md)
  - [Stop](docs/Stop.md)
  - [Stop1](docs/Stop1.md)
@@ -310,6 +344,7 @@ Class | Method | HTTP request | Description
  - [ToolCall](docs/ToolCall.md)
  - [ToolChoice](docs/ToolChoice.md)
  - [ToolChoiceEnum](docs/ToolChoiceEnum.md)
+ - [ToolExecutionDeltaEvent](docs/ToolExecutionDeltaEvent.md)
  - [ToolExecutionDoneEvent](docs/ToolExecutionDoneEvent.md)
  - [ToolExecutionEntry](docs/ToolExecutionEntry.md)
  - [ToolExecutionStartedEvent](docs/ToolExecutionStartedEvent.md)

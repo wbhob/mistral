@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **Stream** | Pointer to **bool** |  | [optional] [default to true]
 **Store** | Pointer to **bool** | Whether to store the results into our servers or not. | [optional] [default to true]
 **HandoffExecution** | Pointer to **string** |  | [optional] [default to "server"]
-**FromEntryId** | **string** |  | 
 **CompletionArgs** | Pointer to [**CompletionArgs**](CompletionArgs.md) | Completion arguments that will be used to generate assistant responses. Can be overridden at each message request. | [optional] 
+**FromEntryId** | **string** |  | 
 
 ## Methods
 
@@ -125,26 +125,6 @@ SetHandoffExecution sets HandoffExecution field to given value.
 
 HasHandoffExecution returns a boolean if a field has been set.
 
-### GetFromEntryId
-
-`func (o *ConversationRestartStreamRequest) GetFromEntryId() string`
-
-GetFromEntryId returns the FromEntryId field if non-nil, zero value otherwise.
-
-### GetFromEntryIdOk
-
-`func (o *ConversationRestartStreamRequest) GetFromEntryIdOk() (*string, bool)`
-
-GetFromEntryIdOk returns a tuple with the FromEntryId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetFromEntryId
-
-`func (o *ConversationRestartStreamRequest) SetFromEntryId(v string)`
-
-SetFromEntryId sets FromEntryId field to given value.
-
-
 ### GetCompletionArgs
 
 `func (o *ConversationRestartStreamRequest) GetCompletionArgs() CompletionArgs`
@@ -169,6 +149,26 @@ SetCompletionArgs sets CompletionArgs field to given value.
 `func (o *ConversationRestartStreamRequest) HasCompletionArgs() bool`
 
 HasCompletionArgs returns a boolean if a field has been set.
+
+### GetFromEntryId
+
+`func (o *ConversationRestartStreamRequest) GetFromEntryId() string`
+
+GetFromEntryId returns the FromEntryId field if non-nil, zero value otherwise.
+
+### GetFromEntryIdOk
+
+`func (o *ConversationRestartStreamRequest) GetFromEntryIdOk() (*string, bool)`
+
+GetFromEntryIdOk returns a tuple with the FromEntryId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFromEntryId
+
+`func (o *ConversationRestartStreamRequest) SetFromEntryId(v string)`
+
+SetFromEntryId sets FromEntryId field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

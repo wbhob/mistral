@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **OutputIndex** | Pointer to **int32** |  | [optional] [default to 0]
 **Id** | **string** |  | 
 **Name** | **string** |  | 
+**Arguments** | **string** |  | 
 **Info** | Pointer to **map[string]interface{}** |  | [optional] 
 **ContentIndex** | Pointer to **int32** |  | [optional] [default to 0]
 **Model** | Pointer to **string** |  | [optional] 
@@ -20,7 +21,6 @@ Name | Type | Description | Notes
 **Role** | Pointer to **string** |  | [optional] [default to "assistant"]
 **Content** | [**Content2**](Content2.md) |  | 
 **ToolCallId** | **string** |  | 
-**Arguments** | **string** |  | 
 **PreviousAgentId** | **string** |  | 
 **PreviousAgentName** | **string** |  | 
 **NextAgentId** | **string** |  | 
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewData
 
-`func NewData(conversationId string, usage ConversationUsageInfo, message string, code int32, id string, name string, content Content2, toolCallId string, arguments string, previousAgentId string, previousAgentName string, nextAgentId string, nextAgentName string, ) *Data`
+`func NewData(conversationId string, usage ConversationUsageInfo, message string, code int32, id string, name string, arguments string, content Content2, toolCallId string, previousAgentId string, previousAgentName string, nextAgentId string, nextAgentName string, ) *Data`
 
 NewData instantiates a new Data object
 This constructor will assign default values to properties that have it defined,
@@ -240,6 +240,26 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetArguments
+
+`func (o *Data) GetArguments() string`
+
+GetArguments returns the Arguments field if non-nil, zero value otherwise.
+
+### GetArgumentsOk
+
+`func (o *Data) GetArgumentsOk() (*string, bool)`
+
+GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArguments
+
+`func (o *Data) SetArguments(v string)`
+
+SetArguments sets Arguments field to given value.
+
+
 ### GetInfo
 
 `func (o *Data) GetInfo() map[string]interface{}`
@@ -403,26 +423,6 @@ and a boolean to check if the value has been set.
 `func (o *Data) SetToolCallId(v string)`
 
 SetToolCallId sets ToolCallId field to given value.
-
-
-### GetArguments
-
-`func (o *Data) GetArguments() string`
-
-GetArguments returns the Arguments field if non-nil, zero value otherwise.
-
-### GetArgumentsOk
-
-`func (o *Data) GetArgumentsOk() (*string, bool)`
-
-GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetArguments
-
-`func (o *Data) SetArguments(v string)`
-
-SetArguments sets Arguments field to given value.
 
 
 ### GetPreviousAgentId

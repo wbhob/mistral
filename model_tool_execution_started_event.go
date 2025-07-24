@@ -26,6 +26,7 @@ type ToolExecutionStartedEvent struct {
 	OutputIndex *int32 `json:"output_index,omitempty"`
 	Id string `json:"id"`
 	Name BuiltInConnectors `json:"name"`
+	Arguments string `json:"arguments"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,7 +36,7 @@ type _ToolExecutionStartedEvent ToolExecutionStartedEvent
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewToolExecutionStartedEvent(id string, name BuiltInConnectors) *ToolExecutionStartedEvent {
+func NewToolExecutionStartedEvent(id string, name BuiltInConnectors, arguments string) *ToolExecutionStartedEvent {
 	this := ToolExecutionStartedEvent{}
 	var type_ string = "tool.execution.started"
 	this.Type = &type_
@@ -43,6 +44,7 @@ func NewToolExecutionStartedEvent(id string, name BuiltInConnectors) *ToolExecut
 	this.OutputIndex = &outputIndex
 	this.Id = id
 	this.Name = name
+	this.Arguments = arguments
 	return &this
 }
 
@@ -202,6 +204,30 @@ func (o *ToolExecutionStartedEvent) SetName(v BuiltInConnectors) {
 	o.Name = v
 }
 
+// GetArguments returns the Arguments field value
+func (o *ToolExecutionStartedEvent) GetArguments() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Arguments
+}
+
+// GetArgumentsOk returns a tuple with the Arguments field value
+// and a boolean to check if the value has been set.
+func (o *ToolExecutionStartedEvent) GetArgumentsOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Arguments, true
+}
+
+// SetArguments sets field value
+func (o *ToolExecutionStartedEvent) SetArguments(v string) {
+	o.Arguments = v
+}
+
 func (o ToolExecutionStartedEvent) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
@@ -223,6 +249,7 @@ func (o ToolExecutionStartedEvent) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
+	toSerialize["arguments"] = o.Arguments
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -238,6 +265,7 @@ func (o *ToolExecutionStartedEvent) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"name",
+		"arguments",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -272,6 +300,7 @@ func (o *ToolExecutionStartedEvent) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "output_index")
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "arguments")
 		o.AdditionalProperties = additionalProperties
 	}
 

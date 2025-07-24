@@ -27,7 +27,7 @@ import (
 )
 
 func main() {
-	oCRRequest := *openapiclient.NewOCRRequest("Model_example", *openapiclient.NewDocument("DocumentUrl_example", *openapiclient.NewImageUrl("Url_example"))) // OCRRequest | 
+	oCRRequest := *openapiclient.NewOCRRequest("Model_example", *openapiclient.NewDocument("FileId_example", "DocumentUrl_example", *openapiclient.NewImageUrl("Url_example"))) // OCRRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

@@ -8,7 +8,8 @@ Name | Type | Description | Notes
 **Tool** | [**BuiltInConnectors**](BuiltInConnectors.md) |  | 
 **Title** | **string** |  | 
 **Url** | Pointer to **NullableString** |  | [optional] 
-**Source** | Pointer to **NullableString** |  | [optional] 
+**Favicon** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -129,41 +130,76 @@ HasUrl returns a boolean if a field has been set.
 `func (o *ToolReferenceChunk) UnsetUrl()`
 
 UnsetUrl ensures that no value is present for Url, not even an explicit nil
-### GetSource
+### GetFavicon
 
-`func (o *ToolReferenceChunk) GetSource() string`
+`func (o *ToolReferenceChunk) GetFavicon() string`
 
-GetSource returns the Source field if non-nil, zero value otherwise.
+GetFavicon returns the Favicon field if non-nil, zero value otherwise.
 
-### GetSourceOk
+### GetFaviconOk
 
-`func (o *ToolReferenceChunk) GetSourceOk() (*string, bool)`
+`func (o *ToolReferenceChunk) GetFaviconOk() (*string, bool)`
 
-GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
+GetFaviconOk returns a tuple with the Favicon field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSource
+### SetFavicon
 
-`func (o *ToolReferenceChunk) SetSource(v string)`
+`func (o *ToolReferenceChunk) SetFavicon(v string)`
 
-SetSource sets Source field to given value.
+SetFavicon sets Favicon field to given value.
 
-### HasSource
+### HasFavicon
 
-`func (o *ToolReferenceChunk) HasSource() bool`
+`func (o *ToolReferenceChunk) HasFavicon() bool`
 
-HasSource returns a boolean if a field has been set.
+HasFavicon returns a boolean if a field has been set.
 
-### SetSourceNil
+### SetFaviconNil
 
-`func (o *ToolReferenceChunk) SetSourceNil(b bool)`
+`func (o *ToolReferenceChunk) SetFaviconNil(b bool)`
 
- SetSourceNil sets the value for Source to be an explicit nil
+ SetFaviconNil sets the value for Favicon to be an explicit nil
 
-### UnsetSource
-`func (o *ToolReferenceChunk) UnsetSource()`
+### UnsetFavicon
+`func (o *ToolReferenceChunk) UnsetFavicon()`
 
-UnsetSource ensures that no value is present for Source, not even an explicit nil
+UnsetFavicon ensures that no value is present for Favicon, not even an explicit nil
+### GetDescription
+
+`func (o *ToolReferenceChunk) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *ToolReferenceChunk) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *ToolReferenceChunk) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *ToolReferenceChunk) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *ToolReferenceChunk) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *ToolReferenceChunk) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

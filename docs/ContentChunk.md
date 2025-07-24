@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **DocumentUrl** | **string** |  | 
 **DocumentName** | Pointer to **string** |  | [optional] 
 **ReferenceIds** | **[]int32** |  | 
+**FileId** | **string** |  | 
 
 ## Methods
 
 ### NewContentChunk
 
-`func NewContentChunk(text string, imageUrl ImageUrl, documentUrl string, referenceIds []int32, ) *ContentChunk`
+`func NewContentChunk(text string, imageUrl ImageUrl, documentUrl string, referenceIds []int32, fileId string, ) *ContentChunk`
 
 NewContentChunk instantiates a new ContentChunk object
 This constructor will assign default values to properties that have it defined,
@@ -158,6 +159,26 @@ and a boolean to check if the value has been set.
 `func (o *ContentChunk) SetReferenceIds(v []int32)`
 
 SetReferenceIds sets ReferenceIds field to given value.
+
+
+### GetFileId
+
+`func (o *ContentChunk) GetFileId() string`
+
+GetFileId returns the FileId field if non-nil, zero value otherwise.
+
+### GetFileIdOk
+
+`func (o *ContentChunk) GetFileIdOk() (*string, bool)`
+
+GetFileIdOk returns a tuple with the FileId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileId
+
+`func (o *ContentChunk) SetFileId(v string)`
+
+SetFileId sets FileId field to given value.
 
 
 

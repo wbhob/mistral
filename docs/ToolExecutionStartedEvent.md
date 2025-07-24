@@ -9,12 +9,13 @@ Name | Type | Description | Notes
 **OutputIndex** | Pointer to **int32** |  | [optional] [default to 0]
 **Id** | **string** |  | 
 **Name** | [**BuiltInConnectors**](BuiltInConnectors.md) |  | 
+**Arguments** | **string** |  | 
 
 ## Methods
 
 ### NewToolExecutionStartedEvent
 
-`func NewToolExecutionStartedEvent(id string, name BuiltInConnectors, ) *ToolExecutionStartedEvent`
+`func NewToolExecutionStartedEvent(id string, name BuiltInConnectors, arguments string, ) *ToolExecutionStartedEvent`
 
 NewToolExecutionStartedEvent instantiates a new ToolExecutionStartedEvent object
 This constructor will assign default values to properties that have it defined,
@@ -142,6 +143,26 @@ and a boolean to check if the value has been set.
 `func (o *ToolExecutionStartedEvent) SetName(v BuiltInConnectors)`
 
 SetName sets Name field to given value.
+
+
+### GetArguments
+
+`func (o *ToolExecutionStartedEvent) GetArguments() string`
+
+GetArguments returns the Arguments field if non-nil, zero value otherwise.
+
+### GetArgumentsOk
+
+`func (o *ToolExecutionStartedEvent) GetArgumentsOk() (*string, bool)`
+
+GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArguments
+
+`func (o *ToolExecutionStartedEvent) SetArguments(v string)`
+
+SetArguments sets Arguments field to given value.
 
 
 

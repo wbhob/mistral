@@ -4,16 +4,17 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Type** | Pointer to **string** |  | [optional] [default to "file"]
+**FileId** | **string** |  | 
 **DocumentUrl** | **string** |  | 
 **DocumentName** | Pointer to **string** |  | [optional] 
-**Type** | Pointer to **string** |  | [optional] [default to "document_url"]
 **ImageUrl** | [**ImageUrl**](ImageUrl.md) |  | 
 
 ## Methods
 
 ### NewDocument
 
-`func NewDocument(documentUrl string, imageUrl ImageUrl, ) *Document`
+`func NewDocument(fileId string, documentUrl string, imageUrl ImageUrl, ) *Document`
 
 NewDocument instantiates a new Document object
 This constructor will assign default values to properties that have it defined,
@@ -27,6 +28,51 @@ will change when the set of required properties is changed
 NewDocumentWithDefaults instantiates a new Document object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetType
+
+`func (o *Document) GetType() string`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *Document) GetTypeOk() (*string, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *Document) SetType(v string)`
+
+SetType sets Type field to given value.
+
+### HasType
+
+`func (o *Document) HasType() bool`
+
+HasType returns a boolean if a field has been set.
+
+### GetFileId
+
+`func (o *Document) GetFileId() string`
+
+GetFileId returns the FileId field if non-nil, zero value otherwise.
+
+### GetFileIdOk
+
+`func (o *Document) GetFileIdOk() (*string, bool)`
+
+GetFileIdOk returns a tuple with the FileId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFileId
+
+`func (o *Document) SetFileId(v string)`
+
+SetFileId sets FileId field to given value.
+
 
 ### GetDocumentUrl
 
@@ -72,31 +118,6 @@ SetDocumentName sets DocumentName field to given value.
 `func (o *Document) HasDocumentName() bool`
 
 HasDocumentName returns a boolean if a field has been set.
-
-### GetType
-
-`func (o *Document) GetType() string`
-
-GetType returns the Type field if non-nil, zero value otherwise.
-
-### GetTypeOk
-
-`func (o *Document) GetTypeOk() (*string, bool)`
-
-GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetType
-
-`func (o *Document) SetType(v string)`
-
-SetType sets Type field to given value.
-
-### HasType
-
-`func (o *Document) HasType() bool`
-
-HasType returns a boolean if a field has been set.
 
 ### GetImageUrl
 

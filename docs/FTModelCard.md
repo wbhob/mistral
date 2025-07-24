@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **MaxContextLength** | Pointer to **int32** |  | [optional] [default to 32768]
 **Aliases** | Pointer to **[]string** |  | [optional] [default to []]
 **Deprecation** | Pointer to **NullableTime** |  | [optional] 
+**DeprecationReplacementModel** | Pointer to **NullableString** |  | [optional] 
 **DefaultModelTemperature** | Pointer to **NullableFloat32** |  | [optional] 
 **Type** | Pointer to **string** |  | [optional] [default to "fine-tuned"]
 **Job** | **string** |  | 
@@ -309,6 +310,41 @@ HasDeprecation returns a boolean if a field has been set.
 `func (o *FTModelCard) UnsetDeprecation()`
 
 UnsetDeprecation ensures that no value is present for Deprecation, not even an explicit nil
+### GetDeprecationReplacementModel
+
+`func (o *FTModelCard) GetDeprecationReplacementModel() string`
+
+GetDeprecationReplacementModel returns the DeprecationReplacementModel field if non-nil, zero value otherwise.
+
+### GetDeprecationReplacementModelOk
+
+`func (o *FTModelCard) GetDeprecationReplacementModelOk() (*string, bool)`
+
+GetDeprecationReplacementModelOk returns a tuple with the DeprecationReplacementModel field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeprecationReplacementModel
+
+`func (o *FTModelCard) SetDeprecationReplacementModel(v string)`
+
+SetDeprecationReplacementModel sets DeprecationReplacementModel field to given value.
+
+### HasDeprecationReplacementModel
+
+`func (o *FTModelCard) HasDeprecationReplacementModel() bool`
+
+HasDeprecationReplacementModel returns a boolean if a field has been set.
+
+### SetDeprecationReplacementModelNil
+
+`func (o *FTModelCard) SetDeprecationReplacementModelNil(b bool)`
+
+ SetDeprecationReplacementModelNil sets the value for DeprecationReplacementModel to be an explicit nil
+
+### UnsetDeprecationReplacementModel
+`func (o *FTModelCard) UnsetDeprecationReplacementModel()`
+
+UnsetDeprecationReplacementModel ensures that no value is present for DeprecationReplacementModel, not even an explicit nil
 ### GetDefaultModelTemperature
 
 `func (o *FTModelCard) GetDefaultModelTemperature() float32`

@@ -13,6 +13,8 @@
 
 * `TOOL_EXECUTION_STARTED` (value: `"tool.execution.started"`)
 
+* `TOOL_EXECUTION_DELTA` (value: `"tool.execution.delta"`)
+
 * `TOOL_EXECUTION_DONE` (value: `"tool.execution.done"`)
 
 * `AGENT_HANDOFF_STARTED` (value: `"agent.handoff.started"`)

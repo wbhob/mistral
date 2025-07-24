@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **FunctionCalling** | Pointer to **bool** |  | [optional] [default to true]
 **FineTuning** | Pointer to **bool** |  | [optional] [default to false]
 **Vision** | Pointer to **bool** |  | [optional] [default to false]
+**Classification** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetVision sets Vision field to given value.
 `func (o *ModelCapabilities) HasVision() bool`
 
 HasVision returns a boolean if a field has been set.
+
+### GetClassification
+
+`func (o *ModelCapabilities) GetClassification() bool`
+
+GetClassification returns the Classification field if non-nil, zero value otherwise.
+
+### GetClassificationOk
+
+`func (o *ModelCapabilities) GetClassificationOk() (*bool, bool)`
+
+GetClassificationOk returns a tuple with the Classification field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClassification
+
+`func (o *ModelCapabilities) SetClassification(v bool)`
+
+SetClassification sets Classification field to given value.
+
+### HasClassification
+
+`func (o *ModelCapabilities) HasClassification() bool`
+
+HasClassification returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

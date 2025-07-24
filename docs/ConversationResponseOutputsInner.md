@@ -14,9 +14,9 @@ Name | Type | Description | Notes
 **Role** | Pointer to **string** |  | [optional] [default to "assistant"]
 **Content** | [**Content1**](Content1.md) |  | 
 **Name** | **string** |  | 
+**Arguments** | [**FunctionCallEntryArguments**](FunctionCallEntryArguments.md) |  | 
 **Info** | Pointer to **map[string]interface{}** |  | [optional] 
 **ToolCallId** | **string** |  | 
-**Arguments** | [**FunctionCallEntryArguments**](FunctionCallEntryArguments.md) |  | 
 **PreviousAgentId** | **string** |  | 
 **PreviousAgentName** | **string** |  | 
 **NextAgentId** | **string** |  | 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewConversationResponseOutputsInner
 
-`func NewConversationResponseOutputsInner(content Content1, name string, toolCallId string, arguments FunctionCallEntryArguments, previousAgentId string, previousAgentName string, nextAgentId string, nextAgentName string, ) *ConversationResponseOutputsInner`
+`func NewConversationResponseOutputsInner(content Content1, name string, arguments FunctionCallEntryArguments, toolCallId string, previousAgentId string, previousAgentName string, nextAgentId string, nextAgentName string, ) *ConversationResponseOutputsInner`
 
 NewConversationResponseOutputsInner instantiates a new ConversationResponseOutputsInner object
 This constructor will assign default values to properties that have it defined,
@@ -281,6 +281,26 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
+### GetArguments
+
+`func (o *ConversationResponseOutputsInner) GetArguments() FunctionCallEntryArguments`
+
+GetArguments returns the Arguments field if non-nil, zero value otherwise.
+
+### GetArgumentsOk
+
+`func (o *ConversationResponseOutputsInner) GetArgumentsOk() (*FunctionCallEntryArguments, bool)`
+
+GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArguments
+
+`func (o *ConversationResponseOutputsInner) SetArguments(v FunctionCallEntryArguments)`
+
+SetArguments sets Arguments field to given value.
+
+
 ### GetInfo
 
 `func (o *ConversationResponseOutputsInner) GetInfo() map[string]interface{}`
@@ -324,26 +344,6 @@ and a boolean to check if the value has been set.
 `func (o *ConversationResponseOutputsInner) SetToolCallId(v string)`
 
 SetToolCallId sets ToolCallId field to given value.
-
-
-### GetArguments
-
-`func (o *ConversationResponseOutputsInner) GetArguments() FunctionCallEntryArguments`
-
-GetArguments returns the Arguments field if non-nil, zero value otherwise.
-
-### GetArgumentsOk
-
-`func (o *ConversationResponseOutputsInner) GetArgumentsOk() (*FunctionCallEntryArguments, bool)`
-
-GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetArguments
-
-`func (o *ConversationResponseOutputsInner) SetArguments(v FunctionCallEntryArguments)`
-
-SetArguments sets Arguments field to given value.
 
 
 ### GetPreviousAgentId

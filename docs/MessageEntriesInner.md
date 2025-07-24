@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **Role** | **string** |  | [default to "assistant"]
 **Content** | [**Content1**](Content1.md) |  | 
+**Prefix** | Pointer to **bool** |  | [optional] [default to false]
 **AgentId** | Pointer to **string** |  | [optional] 
 **Model** | Pointer to **string** |  | [optional] 
 
@@ -197,6 +198,31 @@ and a boolean to check if the value has been set.
 
 SetContent sets Content field to given value.
 
+
+### GetPrefix
+
+`func (o *MessageEntriesInner) GetPrefix() bool`
+
+GetPrefix returns the Prefix field if non-nil, zero value otherwise.
+
+### GetPrefixOk
+
+`func (o *MessageEntriesInner) GetPrefixOk() (*bool, bool)`
+
+GetPrefixOk returns a tuple with the Prefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrefix
+
+`func (o *MessageEntriesInner) SetPrefix(v bool)`
+
+SetPrefix sets Prefix field to given value.
+
+### HasPrefix
+
+`func (o *MessageEntriesInner) HasPrefix() bool`
+
+HasPrefix returns a boolean if a field has been set.
 
 ### GetAgentId
 

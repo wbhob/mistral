@@ -15,7 +15,8 @@ Name | Type | Description | Notes
 **DocumentName** | Pointer to **string** |  | [optional] 
 **Title** | **string** |  | 
 **Url** | Pointer to **string** |  | [optional] 
-**Source** | Pointer to **string** |  | [optional] 
+**Favicon** | Pointer to **string** |  | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -281,30 +282,55 @@ SetUrl sets Url field to given value.
 
 HasUrl returns a boolean if a field has been set.
 
-### GetSource
+### GetFavicon
 
-`func (o *OutputContentChunks) GetSource() string`
+`func (o *OutputContentChunks) GetFavicon() string`
 
-GetSource returns the Source field if non-nil, zero value otherwise.
+GetFavicon returns the Favicon field if non-nil, zero value otherwise.
 
-### GetSourceOk
+### GetFaviconOk
 
-`func (o *OutputContentChunks) GetSourceOk() (*string, bool)`
+`func (o *OutputContentChunks) GetFaviconOk() (*string, bool)`
 
-GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
+GetFaviconOk returns a tuple with the Favicon field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSource
+### SetFavicon
 
-`func (o *OutputContentChunks) SetSource(v string)`
+`func (o *OutputContentChunks) SetFavicon(v string)`
 
-SetSource sets Source field to given value.
+SetFavicon sets Favicon field to given value.
 
-### HasSource
+### HasFavicon
 
-`func (o *OutputContentChunks) HasSource() bool`
+`func (o *OutputContentChunks) HasFavicon() bool`
 
-HasSource returns a boolean if a field has been set.
+HasFavicon returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *OutputContentChunks) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *OutputContentChunks) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *OutputContentChunks) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *OutputContentChunks) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

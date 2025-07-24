@@ -11,12 +11,13 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **Role** | **string** |  | [default to "assistant"]
 **Content** | [**Content1**](Content1.md) |  | 
+**Prefix** | Pointer to **bool** |  | [optional] [default to false]
 **AgentId** | Pointer to **string** |  | [optional] 
 **Model** | Pointer to **string** |  | [optional] 
 **ToolCallId** | **string** |  | 
 **Result** | **string** |  | 
 **Name** | [**BuiltInConnectors**](BuiltInConnectors.md) |  | 
-**Arguments** | [**FunctionCallEntryArguments**](FunctionCallEntryArguments.md) |  | 
+**Arguments** | **string** |  | 
 **Info** | Pointer to **map[string]interface{}** |  | [optional] 
 **PreviousAgentId** | **string** |  | 
 **PreviousAgentName** | **string** |  | 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 
 ### NewConversationHistoryEntriesInner
 
-`func NewConversationHistoryEntriesInner(role string, content Content1, toolCallId string, result string, name BuiltInConnectors, arguments FunctionCallEntryArguments, previousAgentId string, previousAgentName string, nextAgentId string, nextAgentName string, ) *ConversationHistoryEntriesInner`
+`func NewConversationHistoryEntriesInner(role string, content Content1, toolCallId string, result string, name BuiltInConnectors, arguments string, previousAgentId string, previousAgentName string, nextAgentId string, nextAgentName string, ) *ConversationHistoryEntriesInner`
 
 NewConversationHistoryEntriesInner instantiates a new ConversationHistoryEntriesInner object
 This constructor will assign default values to properties that have it defined,
@@ -207,6 +208,31 @@ and a boolean to check if the value has been set.
 SetContent sets Content field to given value.
 
 
+### GetPrefix
+
+`func (o *ConversationHistoryEntriesInner) GetPrefix() bool`
+
+GetPrefix returns the Prefix field if non-nil, zero value otherwise.
+
+### GetPrefixOk
+
+`func (o *ConversationHistoryEntriesInner) GetPrefixOk() (*bool, bool)`
+
+GetPrefixOk returns a tuple with the Prefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrefix
+
+`func (o *ConversationHistoryEntriesInner) SetPrefix(v bool)`
+
+SetPrefix sets Prefix field to given value.
+
+### HasPrefix
+
+`func (o *ConversationHistoryEntriesInner) HasPrefix() bool`
+
+HasPrefix returns a boolean if a field has been set.
+
 ### GetAgentId
 
 `func (o *ConversationHistoryEntriesInner) GetAgentId() string`
@@ -319,20 +345,20 @@ SetName sets Name field to given value.
 
 ### GetArguments
 
-`func (o *ConversationHistoryEntriesInner) GetArguments() FunctionCallEntryArguments`
+`func (o *ConversationHistoryEntriesInner) GetArguments() string`
 
 GetArguments returns the Arguments field if non-nil, zero value otherwise.
 
 ### GetArgumentsOk
 
-`func (o *ConversationHistoryEntriesInner) GetArgumentsOk() (*FunctionCallEntryArguments, bool)`
+`func (o *ConversationHistoryEntriesInner) GetArgumentsOk() (*string, bool)`
 
 GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetArguments
 
-`func (o *ConversationHistoryEntriesInner) SetArguments(v FunctionCallEntryArguments)`
+`func (o *ConversationHistoryEntriesInner) SetArguments(v string)`
 
 SetArguments sets Arguments field to given value.
 

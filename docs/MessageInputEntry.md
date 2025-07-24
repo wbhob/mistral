@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **Role** | **string** |  | 
 **Content** | [**Content**](Content.md) |  | 
+**Prefix** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -205,6 +206,31 @@ and a boolean to check if the value has been set.
 
 SetContent sets Content field to given value.
 
+
+### GetPrefix
+
+`func (o *MessageInputEntry) GetPrefix() bool`
+
+GetPrefix returns the Prefix field if non-nil, zero value otherwise.
+
+### GetPrefixOk
+
+`func (o *MessageInputEntry) GetPrefixOk() (*bool, bool)`
+
+GetPrefixOk returns a tuple with the Prefix field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrefix
+
+`func (o *MessageInputEntry) SetPrefix(v bool)`
+
+SetPrefix sets Prefix field to given value.
+
+### HasPrefix
+
+`func (o *MessageInputEntry) HasPrefix() bool`
+
+HasPrefix returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

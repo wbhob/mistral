@@ -10,13 +10,14 @@ Name | Type | Description | Notes
 **CompletedAt** | Pointer to **NullableTime** |  | [optional] 
 **Id** | Pointer to **string** |  | [optional] 
 **Name** | [**BuiltInConnectors**](BuiltInConnectors.md) |  | 
+**Arguments** | **string** |  | 
 **Info** | Pointer to **map[string]interface{}** |  | [optional] 
 
 ## Methods
 
 ### NewToolExecutionEntry
 
-`func NewToolExecutionEntry(name BuiltInConnectors, ) *ToolExecutionEntry`
+`func NewToolExecutionEntry(name BuiltInConnectors, arguments string, ) *ToolExecutionEntry`
 
 NewToolExecutionEntry instantiates a new ToolExecutionEntry object
 This constructor will assign default values to properties that have it defined,
@@ -184,6 +185,26 @@ and a boolean to check if the value has been set.
 `func (o *ToolExecutionEntry) SetName(v BuiltInConnectors)`
 
 SetName sets Name field to given value.
+
+
+### GetArguments
+
+`func (o *ToolExecutionEntry) GetArguments() string`
+
+GetArguments returns the Arguments field if non-nil, zero value otherwise.
+
+### GetArgumentsOk
+
+`func (o *ToolExecutionEntry) GetArgumentsOk() (*string, bool)`
+
+GetArgumentsOk returns a tuple with the Arguments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArguments
+
+`func (o *ToolExecutionEntry) SetArguments(v string)`
+
+SetArguments sets Arguments field to given value.
 
 
 ### GetInfo
