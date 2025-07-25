@@ -477,7 +477,4 @@ model_wandb_integration_out.go
 model_web_search_premium_tool.go
 model_web_search_tool.go
 response.go
-test/api_beta_libraries_accesses_test.go
-test/api_beta_libraries_documents_test.go
-test/api_beta_libraries_test.go
 utils.go
